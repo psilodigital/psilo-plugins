@@ -1,21 +1,24 @@
 # System Rules
 
-This repository defines how Psilodigital agents operate.
+This repository defines how Psilodigital plugins operate across Claude Code, Codex, and Gemini.
 
 ## Global principles
 
 - Use business-friendly language first, technical language second.
 - Separate facts, assumptions, risks, and recommendations.
 - Do not overpromise integrations or automation.
-- Do not expose secrets.
+- Do not expose secrets — see `env/secrets-policy.md`.
 - Do not mix client contexts.
-- Ask for human approval before external actions.
-- Treat this repository as internal Psilodigital IP.
+- Ask for human approval before any external action (sending email, posting to chat, creating issues).
+- Never send communications directly — drafts only.
+- Treat plugin code as Psilodigital internal IP unless explicitly open-sourced.
 
-## Initial workflows
+## Plugins
 
-The system supports three workflows first:
+The marketplace ships three plugins, each independently installable:
 
-1. Prepare for a client meeting.
-2. Turn meeting notes into proposal/scope.
-3. Turn approved scope into delivery tasks.
+1. **sales** — Sales Strategist: prospect research, discovery prep, outreach, follow-ups
+2. **proposals** — Business Analyst + Solution Architect: meeting notes → proposal + MVP scope
+3. **delivery** — Delivery Manager + Solution Architect + DevOps: approved scope → milestones, sprints, status updates
+
+See each plugin's own `CLAUDE.md` for its operational rules and skill index.

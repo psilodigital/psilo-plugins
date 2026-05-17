@@ -15,11 +15,14 @@ Install one or all. Plugins do not require each other.
 ## Install
 
 ```bash
-# Clone (or update) the repo
+# Clone this repo
 git clone <repo-url> && cd psilodigital-business-agent-system
 
 # Set up the external user vault at ~/Documents/psilodigital/vault/
-./scripts/setup-user-vault.sh
+# by cloning the companion repos into it:
+#   psilodigital-vault    → _company/ (positioning, services, tone, pricing)
+#   psilodigital-clients  → _clients/ (per-client folders — most sensitive)
+# Per-plugin sub-vaults (sales/, proposals/, delivery/) are auto-created on first run.
 
 # In Claude Code: add this repo as a local marketplace
 /plugin marketplace add /full/path/to/psilodigital-business-agent-system
@@ -54,14 +57,16 @@ Each plugin owns its sub-vault under `~/Documents/psilodigital/vault/<plugin>/`.
 ├── governance/             Approval rules, data classification, review checklists
 ├── mcp/                    MCP connector specs and example configs
 ├── prompts/bootstrap/      Scaffolding prompts for new plugins/skills
-├── scripts/                Setup, validation, and context-bundle scripts
 ├── env/                    Permissions and secrets policy
-├── apps/                   Reserved for future admin UI
 ├── SYSTEM.md               Global rules
 ├── ARCHITECTURE.md         Layer model
 ├── CLAUDE.md / AGENTS.md / GEMINI.md / CODEX.md   Repo-level entry points (mirrored)
-└── README.md, ABOUT.md     This file + background
+└── README.md
 ```
+
+**Companion repos** (separate, private):
+- `psilodigital-vault` — Psilodigital company facts (positioning, tone, services, pricing) → clones into `~/Documents/psilodigital/vault/_company/`
+- `psilodigital-clients` — per-client folders → clones into `~/Documents/psilodigital/vault/_clients/` (or sync from Drive/Box per client agreement)
 
 ## Adding a new plugin
 

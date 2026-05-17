@@ -15,8 +15,10 @@ Each plugin is **self-contained**: its own agents, skills, vault template, and A
 ## How to install
 
 ```bash
-# 1. From this repo's root, set up the external user vault:
-./scripts/setup-user-vault.sh
+# 1. Set up the external user vault — clone the companion repos:
+#      psilodigital-vault    → _company/ content
+#      psilodigital-clients  → _clients/ content
+#    into ~/Documents/psilodigital/vault/
 
 # 2. From your AI tool, add this repo as a local marketplace.
 #    (Claude Code:  /plugin marketplace add /path/to/repo)

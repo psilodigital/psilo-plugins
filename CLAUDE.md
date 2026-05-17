@@ -13,8 +13,10 @@ Each plugin is **self-contained**: its own agents, skills, vault template, and C
 ## How to install
 
 ```bash
-# 1. From this repo's root, set up the external user vault:
-./scripts/setup-user-vault.sh
+# 1. Set up the external user vault — clone the companion repos into
+#    ~/Documents/psilodigital/vault/ following their setup instructions:
+#      psilodigital-vault    → _company/ (positioning, services, tone, pricing)
+#      psilodigital-clients  → _clients/ (per-client folders, sensitive)
 
 # 2. From Claude Code, add this repo as a local marketplace:
 /plugin marketplace add /path/to/psilodigital-business-agent-system
@@ -25,7 +27,7 @@ Each plugin is **self-contained**: its own agents, skills, vault template, and C
 /plugin install delivery@psilodigital
 ```
 
-After install, each plugin reads from `~/Documents/psilodigital/vault/<plugin>/` and the shared `~/Documents/psilodigital/vault/_company/` + `_clients/` folders.
+Each plugin reads from `~/Documents/psilodigital/vault/<plugin>/` (auto-scaffolded on first run) and the shared `~/Documents/psilodigital/vault/_company/` + `_clients/` folders (sourced from the companion repos).
 
 ## Where to read next
 
@@ -34,11 +36,12 @@ When working **inside a plugin context**, follow the plugin's own CLAUDE.md:
 - [proposals/CLAUDE.md](proposals/CLAUDE.md)
 - [delivery/CLAUDE.md](delivery/CLAUDE.md)
 
-When working **at the repo level** (adding a plugin, updating governance, modifying scripts):
+When working **at the repo level** (adding a plugin, updating governance, MCP specs):
 1. [SYSTEM.md](SYSTEM.md) — global rules
 2. [ARCHITECTURE.md](ARCHITECTURE.md) — folder purpose and layer model
 3. [governance/](governance/) — approval rules, data classification, review checklist
 4. [prompts/bootstrap/](prompts/bootstrap/) — scaffolding prompts for new plugins/skills
+5. [mcp/](mcp/) — MCP connector specs referenced by plugins
 
 ## Skill taxonomy
 
