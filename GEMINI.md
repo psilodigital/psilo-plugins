@@ -1,6 +1,6 @@
 <!-- Gemini CLI: this file mirrors CLAUDE.md so Gemini reads the same instructions. All three (CLAUDE.md, AGENTS.md, GEMINI.md) stay in sync. -->
 
-# psilodigital-plugins
+# psilo-plugins
 
 Psilodigital's plugin marketplace for Claude Code, Codex CLI, and Gemini CLI. It ships three independently installable plugins: **sales**, **proposals**, **delivery**.
 

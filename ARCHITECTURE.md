@@ -1,6 +1,17 @@
 # Architecture Overview
 
-This repository (`psilodigital-plugins`) is a Claude Code / Codex CLI / Gemini CLI **plugin marketplace**. It ships three independently installable plugins (`sales`, `proposals`, `delivery`), each self-contained with its own agents, skills, and vault template.
+This repository (`psilo-plugins`) is a Claude Code / Codex CLI / Gemini CLI **plugin marketplace** — the reusable intelligence layer of Psilodigital's consulting practice. It ships three independently installable plugins (`sales`, `proposals`, `delivery`), each self-contained with its own agents, skills, and vault template.
+
+## What this repo is — and is not
+
+| It IS | It is NOT |
+|---|---|
+| The reusable intelligence layer (agents, skills, workflows) | A client workspace |
+| Versioned, portable IP installed into many environments | A runtime application |
+| Schemas, templates, examples, industry packs | A UI or end-user product |
+| Public-friendly source code | A store for client data, secrets, logs, or deployments |
+
+This separation is load-bearing: it is what lets us improve the IP once and ship the improvement into every client environment without leaking anyone's data.
 
 ## Six layers
 

@@ -1,6 +1,6 @@
 # System Rules
 
-This repository (`psilodigital-plugins`) defines how Psilodigital plugins operate across Claude Code, Codex CLI, and Gemini CLI.
+This repository (`psilo-plugins`) defines how Psilodigital plugins operate across Claude Code, Codex CLI, and Gemini CLI.
 
 ## Global principles
 

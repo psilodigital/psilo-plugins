@@ -1,4 +1,4 @@
-# psilodigital-plugins
+# psilo-plugins
 
 This repository is Psilodigital's **plugin marketplace** for Claude Code (also Codex CLI and Gemini CLI via mirrored entry docs). It ships three independently installable plugins:
 
@@ -19,7 +19,7 @@ Each plugin is **self-contained**: its own agents, skills, vault template, and C
 #      psilodigital-clients  → _clients/ (per-client folders, sensitive)
 
 # 2. From Claude Code, add this repo as a local marketplace:
-/plugin marketplace add /path/to/psilodigital-plugins
+/plugin marketplace add /path/to/psilo-plugins
 
 # 3. Install one or more plugins:
 /plugin install sales@psilodigital

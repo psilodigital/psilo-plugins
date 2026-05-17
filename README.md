@@ -1,8 +1,34 @@
-# psilodigital-plugins
+# psilo-plugins
 
 Psilodigital's plugin marketplace for Claude Code, Codex CLI, and Gemini CLI.
 
 Each plugin packages a slice of our consulting work — agents, skills, and a vault template — so any team member or partnered client can install just the piece they need.
+
+## What this repo is
+
+`psilo-plugins` is the **reusable intelligence layer** for Psilodigital's AI-augmented consulting practice. It is the portable, versioned IP we install into any environment — internal teams, partnered clients, demo machines — to give Claude/Codex/Gemini the same set of trained agents and operating procedures.
+
+It contains, and only contains:
+
+- Reusable AI employee definitions (`<plugin>/agents/*`)
+- Reusable skills (`<plugin>/skills/op-* | flow-* | task-* | app-*`)
+- Reusable workflows (composed via the skill taxonomy)
+- Industry packs (vault templates, prompt scaffolding)
+- Schemas (`vault-structure.json`, plugin + marketplace manifests)
+- Examples and templates (`vault/config.md`, mirrored entry docs)
+
+## What this repo is NOT
+
+To keep the IP clean, portable, and safe to share, this repo must **never** contain:
+
+- Client private data (lives in `psilodigital-clients` → `_clients/`)
+- Real credentials, API keys, or tokens (live in the user's secret manager)
+- Run logs or generated outputs (briefs, drafts, status updates — stay in the user vault)
+- Production outputs or finalized deliverables
+- Environment variables or `.env` files
+- Deployment code, infrastructure, or runtime/UI applications
+
+If you are looking for a client workspace, a runtime app, or a UI — this is not that repo. This is the IP that *gets installed into* those environments.
 
 ## Plugins
 
@@ -18,8 +44,8 @@ Plugins are independent — install one or all three.
 
 ```bash
 # 1. Clone this repo locally
-git clone https://github.com/psilodigital/psilodigital-plugins.git
-cd psilodigital-plugins
+git clone https://github.com/psilodigital/psilo-plugins.git
+cd psilo-plugins
 
 # 2. Make sure the companion vault repos are cloned into the user vault
 #    (see the psilodigital-vault and psilodigital-clients READMEs)
@@ -27,7 +53,7 @@ cd psilodigital-plugins
 
 # 3. Register this repo as a local plugin marketplace
 # In Claude Code:
-/plugin marketplace add /full/path/to/psilodigital-plugins
+/plugin marketplace add /full/path/to/psilo-plugins
 
 # 4. Install whichever plugins you need
 /plugin install sales@psilodigital

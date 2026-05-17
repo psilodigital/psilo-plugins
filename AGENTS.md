@@ -1,6 +1,6 @@
 <!-- Codex / non-Claude agents: this file mirrors CLAUDE.md so any AGENTS.md-aware agent (Codex CLI, etc.) reads the same instructions. All three (CLAUDE.md, AGENTS.md, GEMINI.md) stay in sync. -->
 
-# psilodigital-plugins
+# psilo-plugins
 
 This repository is Psilodigital's **plugin marketplace** for Claude Code, Codex CLI, and Gemini CLI. It ships three independently installable plugins:
 
