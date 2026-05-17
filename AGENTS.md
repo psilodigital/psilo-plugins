@@ -39,11 +39,11 @@ When working **inside a plugin context**, follow the plugin's own AGENTS.md (or 
 - [proposals/AGENTS.md](proposals/AGENTS.md)
 - [delivery/AGENTS.md](delivery/AGENTS.md)
 
-When working **at the repo level** (adding a plugin, updating governance, modifying scripts):
+When working **at the repo level** (adding a plugin, updating cross-plugin rules):
 1. [SYSTEM.md](SYSTEM.md) — global rules
 2. [ARCHITECTURE.md](ARCHITECTURE.md) — folder purpose and layer model
-3. [governance/](governance/) — approval rules, data classification, review checklist
-4. [prompts/bootstrap/](prompts/bootstrap/) — scaffolding prompts for new plugins/skills
+
+To add a new plugin: copy an existing plugin folder (e.g. `cp -r sales/ new-plugin/`), edit the manifests, agents, and skills, then register it in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 
 ## Skill taxonomy
 
@@ -68,17 +68,10 @@ When creating a new skill, place it inside the relevant plugin's `skills/` folde
 - Ask for human approval before external actions
 - Never send communications directly — drafts only
 
-Full governance in [governance/](governance/).
+These rules are baked into each plugin's agent definition. Psilodigital-specific governance lives in the companion `psilodigital-vault` repo.
 
-## Editing rules (for repo-level work)
+## Editing rules
 
-When creating a new plugin:
-- create `<plugin>/.claude-plugin/plugin.json` and `<plugin>/.codex-plugin/plugin.json`
-- create `<plugin>/CLAUDE.md`, `<plugin>/AGENTS.md`, `<plugin>/GEMINI.md` (mirrors)
-- create `<plugin>/agents/<agent>.md`, `<plugin>/skills/<skill>/SKILL.md`, `<plugin>/vault/config.md`, `<plugin>/vault/vault-structure.json`
-- register the plugin in root `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`
+**New plugin:** copy an existing plugin folder (e.g. `cp -r sales/ new-plugin/`), then update `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `CLAUDE.md`/`AGENTS.md`/`GEMINI.md`, `agents/`, `skills/`, and `vault/config.md` + `vault/vault-structure.json`. Register in both root marketplace files.
 
-When creating a new skill:
-- choose the layer prefix: `app-`, `op-`, `flow-`, or `task-`
-- create `<plugin>/skills/<skill-name>/SKILL.md`
-- declare `called_by` (for flows/tasks) and trigger phrases (for ops) in frontmatter
+**New skill:** choose the layer prefix (`app-` / `op-` / `flow-` / `task-`), create `<plugin>/skills/<skill-name>/SKILL.md`, declare `called_by` (for flows/tasks) and trigger phrases (for ops) in frontmatter.

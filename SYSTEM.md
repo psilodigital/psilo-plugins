@@ -7,7 +7,7 @@ This repository defines how Psilodigital plugins operate across Claude Code, Cod
 - Use business-friendly language first, technical language second.
 - Separate facts, assumptions, risks, and recommendations.
 - Do not overpromise integrations or automation.
-- Do not expose secrets — see `env/secrets-policy.md`.
+- Do not expose secrets. Secrets live only in the user's secret manager, never in this repo or in any vault file.
 - Do not mix client contexts.
 - Ask for human approval before any external action (sending email, posting to chat, creating issues).
 - Never send communications directly — drafts only.

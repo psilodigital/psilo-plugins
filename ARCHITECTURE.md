@@ -9,7 +9,7 @@ This repository is a **Claude Code / Codex / Gemini plugin marketplace**. It shi
 3. **Role Layer** — `<plugin>/agents/<role>.md`. Persona definitions per plugin.
 4. **Capability Layer** — `<plugin>/skills/<skill>/SKILL.md`. Four-layer taxonomy: `app-` (data connectors), `op-` (user-facing entry points), `flow-` (multi-step internals), `task-` (atomic primitives).
 5. **Knowledge Layer** — external user vault at `~/Documents/psilodigital/vault/` containing `_company/` (shared positioning + tone), `_clients/<client>/` (sensitive per-client data), and per-plugin sub-vaults (`sales/`, `proposals/`, `delivery/`). Sourced from the companion `psilodigital-vault` and `psilodigital-clients` repos.
-6. **Control Layer** — repo-level `SYSTEM.md`, `governance/`, `mcp/`, `prompts/bootstrap/`, `env/`. Cross-plugin rules and tooling.
+6. **Control Layer** — repo-level `SYSTEM.md` and per-plugin `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` mirrors. Psilodigital-specific governance, MCP setup, and templates live in the companion `psilodigital-vault` repo.
 
 ## Key separation: code vs. data
 

@@ -36,12 +36,11 @@ When working **inside a plugin context**, follow the plugin's own CLAUDE.md:
 - [proposals/CLAUDE.md](proposals/CLAUDE.md)
 - [delivery/CLAUDE.md](delivery/CLAUDE.md)
 
-When working **at the repo level** (adding a plugin, updating governance, MCP specs):
+When working **at the repo level** (adding a plugin, updating cross-plugin rules):
 1. [SYSTEM.md](SYSTEM.md) — global rules
 2. [ARCHITECTURE.md](ARCHITECTURE.md) — folder purpose and layer model
-3. [governance/](governance/) — approval rules, data classification, review checklist
-4. [prompts/bootstrap/](prompts/bootstrap/) — scaffolding prompts for new plugins/skills
-5. [mcp/](mcp/) — MCP connector specs referenced by plugins
+
+To add a new plugin: copy an existing plugin folder (e.g. `cp -r sales/ new-plugin/`), edit the manifests, agents, and skills, then register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 
 ## Skill taxonomy
 
@@ -66,4 +65,4 @@ When creating a new skill, place it inside the relevant plugin's `skills/` folde
 - Ask for human approval before external actions
 - Never send communications directly — drafts only
 
-Full governance in [governance/](governance/).
+These rules are baked into each plugin's agent definition. Psilodigital-specific governance (approval rules, data classification, review checklists) lives in the companion `psilodigital-vault` repo.

@@ -54,10 +54,6 @@ Each plugin owns its sub-vault under `~/Documents/psilodigital/vault/<plugin>/`.
 ├── sales/                  Sales plugin (self-contained)
 ├── proposals/              Proposals plugin (self-contained)
 ├── delivery/               Delivery plugin (self-contained)
-├── governance/             Approval rules, data classification, review checklists
-├── mcp/                    MCP connector specs and example configs
-├── prompts/bootstrap/      Scaffolding prompts for new plugins/skills
-├── env/                    Permissions and secrets policy
 ├── SYSTEM.md               Global rules
 ├── ARCHITECTURE.md         Layer model
 ├── CLAUDE.md / AGENTS.md / GEMINI.md / CODEX.md   Repo-level entry points (mirrored)
@@ -70,14 +66,12 @@ Each plugin owns its sub-vault under `~/Documents/psilodigital/vault/<plugin>/`.
 
 ## Adding a new plugin
 
-1. Copy one of the existing plugin folders (`sales/`) as a starting point.
-2. Update `<plugin>/.claude-plugin/plugin.json`, `<plugin>/.codex-plugin/plugin.json`.
-3. Edit the plugin's `CLAUDE.md` (and copy to `AGENTS.md` + `GEMINI.md`).
+1. Copy an existing plugin folder: `cp -r sales/ new-plugin/`
+2. Update `<plugin>/.claude-plugin/plugin.json` and `<plugin>/.codex-plugin/plugin.json`.
+3. Edit `CLAUDE.md` (and mirror to `AGENTS.md` + `GEMINI.md`).
 4. Replace agents and skills with the new domain.
 5. Register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 
-See [prompts/bootstrap/](prompts/bootstrap/) for scaffolding prompts.
-
 ## Governance
 
-This is internal Psilodigital IP. Do not commit secrets, real client confidential data, or production credentials. See [governance/](governance/) for approval rules, data classification, and review checklists.
+This is internal Psilodigital IP. Do not commit secrets, real client confidential data, or production credentials. Governance rules (approval, data classification, review checklists) live in the companion `psilodigital-vault` repo.
