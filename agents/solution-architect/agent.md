@@ -16,9 +16,6 @@ The Solution Architect Agent converts business requirements into system architec
 ## Allowed skills
 
 - scope-builder
-- delivery-breakdown
-- mcp-connector-spec
-- deployment-checklist
 
 ## Allowed vault folders
 

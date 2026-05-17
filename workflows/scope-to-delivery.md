@@ -27,8 +27,6 @@ Use after a proposal or scope is approved.
 ## Skills used
 
 - scope-builder
-- delivery-breakdown
-- deployment-checklist
 
 ## Vault context used
 

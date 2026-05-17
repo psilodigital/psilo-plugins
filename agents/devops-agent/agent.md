@@ -15,9 +15,7 @@ The DevOps Agent maintains infrastructure, environments, CI/CD, and operational 
 
 ## Allowed skills
 
-- psilobooking-ops-audit
-- delivery-breakdown
-- deployment-checklist
+_None yet. This agent currently operates directly from its role definition. Skills will be added as they are created (planned: `psilobooking-ops-audit`, `deployment-checklist`)._
 
 ## Allowed vault folders
 

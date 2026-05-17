@@ -15,10 +15,8 @@ The Sales Strategist Agent helps Psilodigital prepare outreach, qualify opportun
 
 ## Allowed skills
 
-- client-research
 - discovery-call-prep
 - proposal-writer
-- follow-up-email
 
 ## Allowed vault folders
 

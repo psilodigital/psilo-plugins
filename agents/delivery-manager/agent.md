@@ -16,8 +16,6 @@ The Delivery Manager Agent turns signed scope into a working delivery plan, trac
 ## Allowed skills
 
 - scope-builder
-- delivery-breakdown
-- follow-up-email
 
 ## Allowed vault folders
 

@@ -16,7 +16,6 @@ The Business Analyst Agent turns messy client information into clear business un
 ## Allowed skills
 
 - discovery-call-prep
-- client-research
 - scope-builder
 - proposal-writer
 

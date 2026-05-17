@@ -26,7 +26,6 @@ Use when a meeting is scheduled or when preparing for an exploratory call.
 ## Skills used
 
 - discovery-call-prep
-- client-research
 
 ## Vault context used
 
@@ -39,10 +38,9 @@ Use when a meeting is scheduled or when preparing for an exploratory call.
 
 1. Read client context.
 2. Read Psilodigital company/services context.
-3. Apply client-research if needed.
-4. Apply discovery-call-prep.
-5. Produce meeting brief.
-6. List assumptions and open questions.
+3. Apply discovery-call-prep.
+4. Produce meeting brief.
+5. List assumptions and open questions.
 
 ## Output
 
