@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0",
+  "plugin": "sales",
+  "structure": {
+    "subfolders": [
+      { "folder": "00_current", "description": "Active briefs and outreach drafts" },
+      { "folder": "01_prior", "description": "Completed and sent communications, archived by quarter" },
+      { "folder": "02_briefs", "description": "Generated meeting briefs, outreach drafts, follow-up emails" }
+    ]
+  },
+  "shared_folders": [
+    { "path": "_company/", "description": "Shared Psilodigital positioning, services, tone of voice, pricing principles", "read_only": true },
+    { "path": "_clients/<client>/", "description": "Shared per-client context (overview, meeting notes, prior communications)", "read_only": false }
+  ],
+  "domains": [
+    { "id": "prospecting", "folder": "00_current", "agent": "sales-strategist", "description": "Active discovery briefs and outreach drafts in flight" },
+    { "id": "follow-ups", "folder": "00_current", "agent": "sales-strategist", "description": "Post-meeting follow-up drafts pending send" }
+  ],
+  "config": {
+    "template": "vault/sales/config.md",
+    "fields": [
+      "your_name",
+      "your_email",
+      "your_calendar_link",
+      "icp_industries",
+      "icp_company_size_min",
+      "outreach_signature",
+      "outreach_cta_default"
+    ]
+  }
+}

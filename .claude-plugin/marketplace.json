@@ -1,0 +1,59 @@
+{
+  "name": "psilodigital",
+  "owner": {
+    "name": "Psilodigital",
+    "email": "info@psilodigital.com"
+  },
+  "metadata": {
+    "displayName": "Psilodigital Business Agent System",
+    "description": "AI agents for Psilodigital's consulting workflows — sales, proposals, and delivery. Install one domain at a time.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "sales",
+      "source": "./sales",
+      "description": "Sales agent for prospect research, discovery call prep, outreach drafting, and follow-up — runs on Psilodigital's company context and tone of voice.",
+      "category": "sales",
+      "keywords": [
+        "sales",
+        "outreach",
+        "discovery",
+        "prospecting",
+        "follow-up",
+        "consulting"
+      ],
+      "license": "MIT"
+    },
+    {
+      "name": "proposals",
+      "source": "./proposals",
+      "description": "Business analyst + solution architect agents that turn meeting notes into proposals and MVP scopes — with assumptions, risks, and open questions made explicit.",
+      "category": "sales",
+      "keywords": [
+        "proposals",
+        "scope",
+        "business-analysis",
+        "mvp",
+        "scoping",
+        "requirements"
+      ],
+      "license": "MIT"
+    },
+    {
+      "name": "delivery",
+      "source": "./delivery",
+      "description": "Delivery manager + solution architect + devops agents that convert approved scope into milestones, GitHub issues, and implementation plans.",
+      "category": "engineering",
+      "keywords": [
+        "delivery",
+        "milestones",
+        "github",
+        "devops",
+        "implementation",
+        "project-management"
+      ],
+      "license": "MIT"
+    }
+  ]
+}

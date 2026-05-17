@@ -1,0 +1,11 @@
+{
+  "name": "sales",
+  "description": "Psilodigital sales agent — prospect research, discovery call prep, outreach drafting, follow-up writing",
+  "version": "0.1.0",
+  "author": {
+    "name": "Psilodigital",
+    "email": "info@psilodigital.com"
+  },
+  "license": "MIT",
+  "homepage": "https://psilodigital.com"
+}

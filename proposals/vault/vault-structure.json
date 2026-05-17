@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0",
+  "plugin": "proposals",
+  "structure": {
+    "subfolders": [
+      { "folder": "00_current", "description": "Active proposal drafts in flight, organized by client" },
+      { "folder": "01_prior", "description": "Sent and archived proposals, organized by quarter" },
+      { "folder": "02_briefs", "description": "Generated artifacts (proposals, scopes, requirements docs)" }
+    ]
+  },
+  "shared_folders": [
+    { "path": "_company/", "description": "Shared Psilodigital positioning, services, pricing principles, delivery principles, tone of voice", "read_only": true },
+    { "path": "_company/_shared/", "description": "Shared reference docs (common-sme-bottlenecks, operations-levels, ai-readiness-framework)", "read_only": true },
+    { "path": "_clients/<client>/", "description": "Shared per-client context (overview, meeting notes, prior communications)", "read_only": false }
+  ],
+  "domains": [
+    { "id": "proposals", "folder": "00_current", "agent": "business-analyst", "description": "Active proposal drafts" },
+    { "id": "scopes", "folder": "00_current", "agent": "solution-architect", "description": "Active scope documents" }
+  ],
+  "config": {
+    "template": "vault/proposals/config.md",
+    "fields": [
+      "your_name",
+      "your_email",
+      "typical_mvp_range_low",
+      "typical_mvp_range_high",
+      "typical_engagement_weeks_low",
+      "typical_engagement_weeks_high",
+      "currency",
+      "offered_services"
+    ]
+  }
+}

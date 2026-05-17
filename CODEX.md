@@ -2,11 +2,8 @@
 
 Codex should treat `AGENTS.md` as the main repository instruction file.
 
-Use this repo to create, validate, and maintain:
-- agent definitions
-- skill folders
-- workflow documents
-- scripts
-- future admin web app
+This repo is a plugin marketplace shipping three plugins (sales, proposals, delivery). See [AGENTS.md](AGENTS.md) for the install flow and structure.
+
+When working inside a specific plugin, use that plugin's `AGENTS.md` (e.g. `sales/AGENTS.md`).
 
 Do not add real secrets or production credentials.

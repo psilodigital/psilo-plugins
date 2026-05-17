@@ -1,15 +1,78 @@
 # Psilodigital Business Agent System
 
-This private repository is Psilodigital's internal business agent operating layer.
+A **Claude Code / Codex / Gemini plugin marketplace** for Psilodigital's consulting work. Each plugin is independently installable and ships agents, skills, and a vault template.
 
-It helps us:
-- prepare client meetings
-- analyze business operations
-- write proposals
-- scope software systems
-- break work into delivery tasks
-- manage repeatable AI-assisted workflows
+## Plugins
 
-This is not a chatbot, SaaS app, or automation runner yet.
+| Plugin | Agents | What it does |
+|--------|--------|--------------|
+| **[sales](sales/)** | Sales Strategist | Prospect research, discovery call prep, outreach drafting, follow-up writing |
+| **[proposals](proposals/)** | Business Analyst + Solution Architect | Meeting notes → proposals + MVP scope with explicit assumptions and risks |
+| **[delivery](delivery/)** | Delivery Manager + Solution Architect + DevOps | Approved scope → milestones, sprint plans, status updates, GitHub issue structure |
 
-It is a file-based system that can be used by Claude, Codex, Gemini, Cursor, and other AI tools.
+Install one or all. Plugins do not require each other.
+
+## Install
+
+```bash
+# Clone (or update) the repo
+git clone <repo-url> && cd psilodigital-business-agent-system
+
+# Set up the external user vault at ~/Documents/psilodigital/vault/
+./scripts/setup-user-vault.sh
+
+# In Claude Code: add this repo as a local marketplace
+/plugin marketplace add /full/path/to/psilodigital-business-agent-system
+
+# Install whichever domains you need
+/plugin install sales@psilodigital
+/plugin install proposals@psilodigital
+/plugin install delivery@psilodigital
+```
+
+After install, fill in the per-plugin `config.md` under `~/Documents/psilodigital/vault/<plugin>/` and add at least one client folder under `~/Documents/psilodigital/vault/_clients/<client>/overview.md`.
+
+## How it works
+
+Each plugin follows a four-layer skill model:
+- **app-** — external data connectors (HubSpot, Gong, GitHub) when MCPs aren't natively available
+- **op-** — user-facing entry points ("prep me for a discovery call with Artway")
+- **flow-** — multi-step internals called by ops
+- **task-** — atomic primitives (flag an assumption, update open-loops)
+
+Each plugin owns its sub-vault under `~/Documents/psilodigital/vault/<plugin>/`. Shared company facts (positioning, services, tone, pricing) live in `~/Documents/psilodigital/vault/_company/`. Per-client data lives in `~/Documents/psilodigital/vault/_clients/<client>/`.
+
+## Repository layout
+
+```
+.
+├── .claude-plugin/         marketplace + root plugin manifest
+├── .agents/plugins/        Codex CLI marketplace mirror
+├── sales/                  Sales plugin (self-contained)
+├── proposals/              Proposals plugin (self-contained)
+├── delivery/               Delivery plugin (self-contained)
+├── governance/             Approval rules, data classification, review checklists
+├── mcp/                    MCP connector specs and example configs
+├── prompts/bootstrap/      Scaffolding prompts for new plugins/skills
+├── scripts/                Setup, validation, and context-bundle scripts
+├── env/                    Permissions and secrets policy
+├── apps/                   Reserved for future admin UI
+├── SYSTEM.md               Global rules
+├── ARCHITECTURE.md         Layer model
+├── CLAUDE.md / AGENTS.md / GEMINI.md / CODEX.md   Repo-level entry points (mirrored)
+└── README.md, ABOUT.md     This file + background
+```
+
+## Adding a new plugin
+
+1. Copy one of the existing plugin folders (`sales/`) as a starting point.
+2. Update `<plugin>/.claude-plugin/plugin.json`, `<plugin>/.codex-plugin/plugin.json`.
+3. Edit the plugin's `CLAUDE.md` (and copy to `AGENTS.md` + `GEMINI.md`).
+4. Replace agents and skills with the new domain.
+5. Register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
+
+See [prompts/bootstrap/](prompts/bootstrap/) for scaffolding prompts.
+
+## Governance
+
+This is internal Psilodigital IP. Do not commit secrets, real client confidential data, or production credentials. See [governance/](governance/) for approval rules, data classification, and review checklists.

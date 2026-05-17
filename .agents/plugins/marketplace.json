@@ -1,0 +1,45 @@
+{
+  "name": "psilodigital",
+  "interface": {
+    "displayName": "Psilodigital Business Agent System",
+    "shortDescription": "AI agents for Psilodigital's consulting workflows — sales, proposals, and delivery"
+  },
+  "plugins": [
+    {
+      "name": "sales",
+      "source": {
+        "source": "local",
+        "path": "./sales"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Sales"
+    },
+    {
+      "name": "proposals",
+      "source": {
+        "source": "local",
+        "path": "./proposals"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Sales"
+    },
+    {
+      "name": "delivery",
+      "source": {
+        "source": "local",
+        "path": "./delivery"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
+    }
+  ]
+}

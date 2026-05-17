@@ -1,0 +1,11 @@
+{
+  "name": "delivery",
+  "description": "Psilodigital delivery manager + solution architect + devops — convert approved scope into milestones, GitHub issues, and implementation plans",
+  "version": "0.1.0",
+  "author": {
+    "name": "Psilodigital",
+    "email": "info@psilodigital.com"
+  },
+  "license": "MIT",
+  "homepage": "https://psilodigital.com"
+}

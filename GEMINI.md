@@ -1,10 +1,12 @@
-# Gemini Instructions
+<!-- Gemini CLI: this file mirrors CLAUDE.md so Gemini reads the same instructions. All three (CLAUDE.md, AGENTS.md, GEMINI.md) stay in sync. -->
 
-Gemini should use this repo as a structured business context and workflow system.
+# Psilodigital Business Agent System — Plugin Marketplace
 
-Follow:
-- SYSTEM.md for rules
-- agents/ for role behavior
-- skills/ for task procedures
-- vault/ for context
-- workflows/ for process steps
+This repository is a Claude Code / Codex CLI / Gemini CLI plugin marketplace for Psilodigital. It ships three independently installable plugins: **sales**, **proposals**, **delivery**.
+
+See [CLAUDE.md](CLAUDE.md) or [AGENTS.md](AGENTS.md) for the full marketplace overview, install instructions, skill taxonomy, and global rules.
+
+When working inside a plugin context, follow that plugin's own `GEMINI.md` (mirrors `CLAUDE.md` and `AGENTS.md`):
+- [sales/GEMINI.md](sales/GEMINI.md)
+- [proposals/GEMINI.md](proposals/GEMINI.md)
+- [delivery/GEMINI.md](delivery/GEMINI.md)

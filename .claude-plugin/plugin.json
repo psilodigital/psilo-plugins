@@ -1,0 +1,11 @@
+{
+  "name": "Psilodigital Business Agent System",
+  "description": "AI agents for sales, proposals, and delivery — install one business domain at a time",
+  "version": "0.1.0",
+  "author": {
+    "name": "Psilodigital",
+    "email": "info@psilodigital.com"
+  },
+  "license": "MIT",
+  "homepage": "https://psilodigital.com"
+}

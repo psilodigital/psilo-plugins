@@ -1,37 +1,82 @@
-# AGENTS.md
+<!-- Codex / non-Claude agents: this file mirrors CLAUDE.md so any AGENTS.md-aware agent (Codex CLI, etc.) reads the same instructions. All three (CLAUDE.md, AGENTS.md, GEMINI.md) stay in sync. -->
 
-## Repository purpose
+# Psilodigital Business Agent System — Plugin Marketplace
 
-This repo is Psilodigital's Business Agent System.
+This repository is a **Claude Code / Codex CLI / Gemini CLI plugin marketplace** for Psilodigital. It ships three independently installable plugins:
 
-Agents should use this repo to understand:
-- who Psilodigital is
-- what services/products we offer
-- how we prepare meetings
-- how we write proposals
-- how we scope delivery
-- how we structure reusable agent skills
+| Plugin | Agents | What it does |
+|--------|--------|--------------|
+| **sales** | Sales Strategist | Prospect research, discovery prep, outreach, follow-ups |
+| **proposals** | Business Analyst + Solution Architect | Meeting notes → proposals + MVP scope |
+| **delivery** | Delivery Manager + Solution Architect + DevOps | Approved scope → milestones, sprints, status updates |
 
-## Working rules
+Each plugin is **self-contained**: its own agents, skills, vault template, and AGENTS.md entry point. Install only what you need.
 
-- Read `SYSTEM.md` first.
-- Use `ARCHITECTURE.md` to understand folder purpose.
-- Use `agents/` for role behavior.
-- Use `skills/` for procedures.
-- Use `vault/` for facts and context.
-- Use `workflows/` for process orchestration.
-- Never add secrets.
-- Never invent client facts.
-- Mark assumptions clearly.
+## How to install
 
-## Editing rules
+```bash
+# 1. From this repo's root, set up the external user vault:
+./scripts/setup-user-vault.sh
+
+# 2. From your AI tool, add this repo as a local marketplace.
+#    (Claude Code:  /plugin marketplace add /path/to/repo)
+#    (Codex CLI:    see .agents/plugins/marketplace.json)
+
+# 3. Install one or more plugins:
+#    /plugin install sales@psilodigital
+#    /plugin install proposals@psilodigital
+#    /plugin install delivery@psilodigital
+```
+
+After install, each plugin reads from `~/Documents/psilodigital/vault/<plugin>/` and the shared `~/Documents/psilodigital/vault/_company/` + `_clients/` folders.
+
+## Where to read next
+
+When working **inside a plugin context**, follow the plugin's own AGENTS.md (or CLAUDE.md / GEMINI.md — they are mirrors):
+- [sales/AGENTS.md](sales/AGENTS.md)
+- [proposals/AGENTS.md](proposals/AGENTS.md)
+- [delivery/AGENTS.md](delivery/AGENTS.md)
+
+When working **at the repo level** (adding a plugin, updating governance, modifying scripts):
+1. [SYSTEM.md](SYSTEM.md) — global rules
+2. [ARCHITECTURE.md](ARCHITECTURE.md) — folder purpose and layer model
+3. [governance/](governance/) — approval rules, data classification, review checklist
+4. [prompts/bootstrap/](prompts/bootstrap/) — scaffolding prompts for new plugins/skills
+
+## Skill taxonomy
+
+All plugin skills follow a four-layer pattern:
+
+| Layer | Purpose | Naming |
+|-------|---------|--------|
+| **app-** | External data connectors (MCP fallbacks) | `app-hubspot`, `app-github` |
+| **op-** | User-facing entry points | `op-prep-discovery-call`, `op-build-proposal` |
+| **flow-** | Multi-step internals called by ops | `flow-research-client`, `flow-build-scope` |
+| **task-** | Atomic primitives called by flows | `task-flag-assumption`, `task-update-open-loops` |
+
+When creating a new skill, place it inside the relevant plugin's `skills/` folder with this prefix convention.
+
+## Global rules (apply across all plugins)
+
+- Business-friendly language first, technical second
+- Separate facts, assumptions, risks, recommendations
+- Never overpromise integrations or automation
+- Never expose secrets
+- Never mix client contexts
+- Ask for human approval before external actions
+- Never send communications directly — drafts only
+
+Full governance in [governance/](governance/).
+
+## Editing rules (for repo-level work)
+
+When creating a new plugin:
+- create `<plugin>/.claude-plugin/plugin.json` and `<plugin>/.codex-plugin/plugin.json`
+- create `<plugin>/CLAUDE.md`, `<plugin>/AGENTS.md`, `<plugin>/GEMINI.md` (mirrors)
+- create `<plugin>/agents/<agent>.md`, `<plugin>/skills/<skill>/SKILL.md`, `<plugin>/vault/config.md`, `<plugin>/vault/vault-structure.json`
+- register the plugin in root `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`
 
 When creating a new skill:
-- create a folder under `skills/`
-- include `SKILL.md`
-- include `templates/`, `references/`, and `examples/`
-
-When creating a new agent:
-- create a folder under `agents/`
-- include `agent.md`
-- list allowed skills and allowed vault folders
+- choose the layer prefix: `app-`, `op-`, `flow-`, or `task-`
+- create `<plugin>/skills/<skill-name>/SKILL.md`
+- declare `called_by` (for flows/tasks) and trigger phrases (for ops) in frontmatter

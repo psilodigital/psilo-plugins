@@ -1,0 +1,32 @@
+{
+  "version": "0.1.0",
+  "plugin": "delivery",
+  "structure": {
+    "subfolders": [
+      { "folder": "00_current", "description": "Active engagements: delivery plans, sprint plans, status updates, ADRs, runbooks" },
+      { "folder": "01_prior", "description": "Completed engagements, archived by quarter" },
+      { "folder": "02_briefs", "description": "Generated artifacts: status reports, retrospectives" }
+    ]
+  },
+  "shared_folders": [
+    { "path": "_company/", "description": "Shared Psilodigital delivery principles, services, tone of voice", "read_only": true },
+    { "path": "_clients/<client>/", "description": "Per-client context, including the approved scope.md from the proposals plugin", "read_only": false }
+  ],
+  "domains": [
+    { "id": "delivery-plans", "folder": "00_current", "agent": "delivery-manager", "description": "Active delivery plans with milestones and dependencies" },
+    { "id": "architecture", "folder": "00_current", "agent": "solution-architect", "description": "ADRs and integration verification notes" },
+    { "id": "devops", "folder": "00_current", "agent": "devops-agent", "description": "Environment plans, CI/CD definitions, deployment runbooks" }
+  ],
+  "config": {
+    "template": "vault/delivery/config.md",
+    "fields": [
+      "your_name",
+      "your_email",
+      "default_milestone_weeks",
+      "default_sprint_weeks",
+      "issue_tracker",
+      "ci_provider",
+      "hosting_default"
+    ]
+  }
+}

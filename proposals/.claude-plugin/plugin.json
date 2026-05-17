@@ -1,0 +1,11 @@
+{
+  "name": "proposals",
+  "description": "Psilodigital business analyst + solution architect — turn meeting notes into proposals and MVP scopes with explicit assumptions and risks",
+  "version": "0.1.0",
+  "author": {
+    "name": "Psilodigital",
+    "email": "info@psilodigital.com"
+  },
+  "license": "MIT",
+  "homepage": "https://psilodigital.com"
+}
