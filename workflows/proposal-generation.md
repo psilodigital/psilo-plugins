@@ -1,64 +1,56 @@
-# Workflow: proposal-generation
+# Proposal Generation Workflow
 
-**Goal:** From a completed discovery, produce a proposal Psilodigital is proud to send.
+## Purpose
 
-## Trigger phrases
+Turn meeting notes and client context into a proposal draft.
 
-- "Draft a proposal for X"
-- "Write up the proposal we discussed"
-- "Send X our pitch for the booking system"
+## Trigger
+
+Use after a discovery meeting or when enough scope context exists.
 
 ## Inputs
 
-- Client folder under `vault/clients/<slug>/`
-- Discovery notes (in `meetings/`)
-- Optional: rough budget signal, deadlines, decision-makers
+- Client context
+- Meeting notes
+- Pain points
+- Desired outcomes
+- Scope assumptions
 
-## Steps
+## Primary agent
 
-1. **Confirm we have the basics.**
-   - Research brief exists.
-   - Discovery notes exist.
-   - If anything is thin, pause and surface what's missing.
+- sales-strategist
 
-2. **Run BA pass.**
-   - Use [agents/business-analyst.md](../agents/business-analyst.md) to extract current state + opportunities into `analysis/`.
+## Supporting agents
 
-3. **Run SA pass.**
-   - Use [agents/solution-architect.md](../agents/solution-architect.md) to draft architecture into `architecture/`.
+- business-analyst
+- solution-architect
 
-4. **Build scope.**
-   - Use [skills/scope-builder.md](../skills/scope-builder.md) → `scope/`.
+## Skills used
 
-5. **Draft proposal.**
-   - Use [skills/proposal-writer.md](../skills/proposal-writer.md) → `proposals/<YYYY-MM-DD>-<title>.md`.
-   - Pricing: pull from `vault/company/rate-card.md` if present, else flag for operator.
+- proposal-writer
+- scope-builder
 
-6. **Internal review.**
-   - Summarize delta vs. typical proposal: scope size, price, risk.
-   - Flag anything the operator should double-check (assumptions, ranges, integrations).
+## Vault context used
 
-7. **Operator approval gate.**
-   - **Do not send.** Surface a clear link + checklist.
+- vault/company/
+- vault/templates/proposal-template.md
+- vault/clients/[client]/
+
+## Procedure
+
+1. Read client context and meeting notes.
+2. Identify business problems.
+3. Draft proposed solution.
+4. Use scope-builder for MVP boundaries.
+5. Use proposal-writer for proposal structure.
+6. Mark assumptions and open questions.
+7. Save proposal draft.
 
 ## Output
 
-```
-vault/clients/<slug>/
-├── analysis/
-├── architecture/
-├── scope/
-└── proposals/<YYYY-MM-DD>-<title>.md
-```
+Output path:
+`outputs/[client]/proposal-draft.md`
 
-## Done when
+## Approval points
 
-- Proposal is drafted with no `TBD` left.
-- Pricing is a number or range, not a placeholder.
-- Operator has reviewed and either sent it, edited it, or sent it back with notes.
-
-## Agents involved
-
-- Sales Strategist (lead)
-- Business Analyst
-- Solution Architect
+Human approval required before sending to client.

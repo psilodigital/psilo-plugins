@@ -1,58 +1,56 @@
-# Workflow: scope-to-delivery
+# Scope to Delivery Workflow
 
-**Goal:** Take a signed scope and turn it into a working delivery plan with milestones, owners, and a cadence.
+## Purpose
 
-## Trigger phrases
+Turn approved scope into delivery plan and implementation tasks.
 
-- "We just signed X — kick off delivery"
-- "Build the delivery plan for X"
-- "Replan X after the change request"
+## Trigger
+
+Use after a proposal or scope is approved.
 
 ## Inputs
 
-- Signed scope under `vault/clients/<slug>/scope/`
-- Team availability (operator provides)
-- Hard deadlines (operator provides)
+- Approved scope
+- Timeline
+- Team capacity
+- Known technical constraints
 
-## Steps
+## Primary agent
 
-1. **Validate scope is signed.**
-   - If draft, pause and confirm with operator.
+- solution-architect
 
-2. **Run [skills/delivery-breakdown.md](../skills/delivery-breakdown.md).**
-   - Produces `delivery/delivery-plan.md`.
+## Supporting agents
 
-3. **Risk register.**
-   - Identify top 5 risks. Mitigation + trigger for each. Append to delivery plan.
+- delivery-manager
+- devops-agent
 
-4. **Decisions log.**
-   - Initialize `delivery/decisions.md` with key decisions made in scoping.
+## Skills used
 
-5. **Cadence setup.**
-   - Define internal standup, client check-in, and demo cadence.
-   - If Linear / Notion MCP is connected, sync milestones (operator approval before write).
+- scope-builder
+- delivery-breakdown
+- deployment-checklist
 
-6. **Kickoff brief.**
-   - Draft a 1-pager kickoff email for the client. Save to `communications/`. Do not send automatically.
+## Vault context used
+
+- vault/company/delivery-principles.md
+- vault/clients/[client]/
+- vault/templates/technical-scope-template.md
+
+## Procedure
+
+1. Read approved scope.
+2. Identify deliverables.
+3. Break into milestones.
+4. Break milestones into implementation tasks.
+5. Identify dependencies and risks.
+6. Suggest GitHub issue structure.
+7. Save delivery plan.
 
 ## Output
 
-```
-vault/clients/<slug>/
-├── delivery/
-│   ├── delivery-plan.md
-│   ├── decisions.md
-│   └── status/
-└── communications/<YYYY-MM-DD>-kickoff.md
-```
+Output path:
+`outputs/[client]/delivery-plan.md`
 
-## Done when
+## Approval points
 
-- Plan is broken into phases, each ending in a demoable outcome.
-- Critical path is identified.
-- Operator has approved cadence and kickoff message.
-
-## Agents involved
-
-- Delivery Manager (lead)
-- Solution Architect (consulted)
+Human approval required before creating GitHub issues or committing timeline.
