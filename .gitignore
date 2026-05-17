@@ -1,0 +1,34 @@
+# Secrets and env
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+secrets/
+env/.env
+
+# Node / TS
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+.pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+
+# Agent runtimes
+.claude/cache/
+.codex/cache/
+.gemini/cache/
+.agent-cache/
+
+# Client data (never commit)
+vault/clients/*/private/
+vault/clients/*/raw/
