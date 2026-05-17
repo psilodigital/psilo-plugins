@@ -1,77 +1,93 @@
-# Psilodigital Business Agent System
+# psilodigital-plugins
 
-A **Claude Code / Codex / Gemini plugin marketplace** for Psilodigital's consulting work. Each plugin is independently installable and ships agents, skills, and a vault template.
+Psilodigital's plugin marketplace for Claude Code, Codex CLI, and Gemini CLI.
+
+Each plugin packages a slice of our consulting work — agents, skills, and a vault template — so any team member or partnered client can install just the piece they need.
 
 ## Plugins
 
 | Plugin | Agents | What it does |
-|--------|--------|--------------|
+|---|---|---|
 | **[sales](sales/)** | Sales Strategist | Prospect research, discovery call prep, outreach drafting, follow-up writing |
-| **[proposals](proposals/)** | Business Analyst + Solution Architect | Meeting notes → proposals + MVP scope with explicit assumptions and risks |
-| **[delivery](delivery/)** | Delivery Manager + Solution Architect + DevOps | Approved scope → milestones, sprint plans, status updates, GitHub issue structure |
+| **[proposals](proposals/)** | Business Analyst + Solution Architect | Meeting notes → proposal + MVP scope, with explicit assumptions and risks |
+| **[delivery](delivery/)** | Delivery Manager + Solution Architect + DevOps | Approved scope → milestones, sprints, status updates, GitHub issue structure |
 
-Install one or all. Plugins do not require each other.
+Plugins are independent — install one or all three.
 
 ## Install
 
 ```bash
-# Clone this repo
-git clone <repo-url> && cd psilodigital-business-agent-system
+# 1. Clone this repo locally
+git clone https://github.com/psilodigital/psilodigital-plugins.git
+cd psilodigital-plugins
 
-# Set up the external user vault at ~/Documents/psilodigital/vault/
-# by cloning the companion repos into it:
-#   psilodigital-vault    → _company/ (positioning, services, tone, pricing)
-#   psilodigital-clients  → _clients/ (per-client folders — most sensitive)
-# Per-plugin sub-vaults (sales/, proposals/, delivery/) are auto-created on first run.
+# 2. Make sure the companion vault repos are cloned into the user vault
+#    (see the psilodigital-vault and psilodigital-clients READMEs)
+#    Result: ~/Documents/psilodigital/vault/{_company,_clients}/
 
-# In Claude Code: add this repo as a local marketplace
-/plugin marketplace add /full/path/to/psilodigital-business-agent-system
+# 3. Register this repo as a local plugin marketplace
+# In Claude Code:
+/plugin marketplace add /full/path/to/psilodigital-plugins
 
-# Install whichever domains you need
+# 4. Install whichever plugins you need
 /plugin install sales@psilodigital
 /plugin install proposals@psilodigital
 /plugin install delivery@psilodigital
 ```
 
-After install, fill in the per-plugin `config.md` under `~/Documents/psilodigital/vault/<plugin>/` and add at least one client folder under `~/Documents/psilodigital/vault/_clients/<client>/overview.md`.
+On first run, each plugin scaffolds its own sub-vault under `~/Documents/psilodigital/vault/<plugin>/` and asks you to fill in `config.md`.
 
-## How it works
-
-Each plugin follows a four-layer skill model:
-- **app-** — external data connectors (HubSpot, Gong, GitHub) when MCPs aren't natively available
-- **op-** — user-facing entry points ("prep me for a discovery call with Artway")
-- **flow-** — multi-step internals called by ops
-- **task-** — atomic primitives (flag an assumption, update open-loops)
-
-Each plugin owns its sub-vault under `~/Documents/psilodigital/vault/<plugin>/`. Shared company facts (positioning, services, tone, pricing) live in `~/Documents/psilodigital/vault/_company/`. Per-client data lives in `~/Documents/psilodigital/vault/_clients/<client>/`.
-
-## Repository layout
+## How a plugin is organized
 
 ```
-.
-├── .claude-plugin/         marketplace + root plugin manifest
-├── .agents/plugins/        Codex CLI marketplace mirror
-├── sales/                  Sales plugin (self-contained)
-├── proposals/              Proposals plugin (self-contained)
-├── delivery/               Delivery plugin (self-contained)
-├── SYSTEM.md               Global rules
-├── ARCHITECTURE.md         Layer model
-├── CLAUDE.md / AGENTS.md / GEMINI.md / CODEX.md   Repo-level entry points (mirrored)
-└── README.md
+<plugin>/
+├── .claude-plugin/plugin.json   ← Claude Code manifest
+├── .codex-plugin/plugin.json    ← Codex CLI manifest
+├── CLAUDE.md / AGENTS.md / GEMINI.md   ← mirrored entry points
+├── agents/<role>.md             ← agent personas
+├── skills/                      ← four-layer taxonomy
+│   ├── op-*    ← user-facing entry points
+│   ├── flow-*  ← multi-step internals called by ops
+│   ├── task-*  ← atomic primitives called by flows
+│   └── app-*   ← external data connectors (optional)
+└── vault/
+    ├── config.md                ← user-vault template
+    └── vault-structure.json     ← declares the user-vault shape
 ```
 
-**Companion repos** (separate, private):
-- `psilodigital-vault` — Psilodigital company facts (positioning, tone, services, pricing) → clones into `~/Documents/psilodigital/vault/_company/`
-- `psilodigital-clients` — per-client folders → clones into `~/Documents/psilodigital/vault/_clients/` (or sync from Drive/Box per client agreement)
+## Where data lives
+
+Plugin **code** is in this repo. Plugin **data** is in two companion repos cloned into the user's local vault:
+
+```
+~/Documents/psilodigital/vault/
+├── _company/      ← from psilodigital-vault (positioning, services, tone, pricing)
+├── _clients/      ← from psilodigital-clients (per-client folders — sensitive)
+├── sales/         ← scaffolded by this repo's sales plugin
+├── proposals/     ← scaffolded by this repo's proposals plugin
+└── delivery/      ← scaffolded by this repo's delivery plugin
+```
+
+This separation keeps reusable code public-friendly while keeping company and client data restricted.
 
 ## Adding a new plugin
 
-1. Copy an existing plugin folder: `cp -r sales/ new-plugin/`
-2. Update `<plugin>/.claude-plugin/plugin.json` and `<plugin>/.codex-plugin/plugin.json`.
-3. Edit `CLAUDE.md` (and mirror to `AGENTS.md` + `GEMINI.md`).
-4. Replace agents and skills with the new domain.
-5. Register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
+1. `cp -r sales/ new-plugin/`
+2. Edit `new-plugin/.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `CLAUDE.md` (mirror to `AGENTS.md` + `GEMINI.md`), agents, skills, and `vault/config.md`.
+3. Register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 
-## Governance
+## Global rules
 
-This is internal Psilodigital IP. Do not commit secrets, real client confidential data, or production credentials. Governance rules (approval, data classification, review checklists) live in the companion `psilodigital-vault` repo.
+- Business-friendly language first, technical second
+- Separate facts, assumptions, risks, recommendations
+- Never overpromise integrations or automation
+- Never expose secrets
+- Never mix client contexts
+- Never send communications directly — drafts only
+- Ask for human approval before any external action
+
+Each plugin's agent definition enforces these rules. Psilodigital-specific governance (approval rules, data classification, review checklists) lives in `psilodigital-vault`.
+
+## License
+
+Internal Psilodigital IP. Do not redistribute without explicit approval.

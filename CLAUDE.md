@@ -1,6 +1,6 @@
-# Psilodigital Business Agent System — Plugin Marketplace
+# psilodigital-plugins
 
-This repository is a **Claude Code plugin marketplace** for Psilodigital. It ships three independently installable plugins:
+This repository is Psilodigital's **plugin marketplace** for Claude Code (also Codex CLI and Gemini CLI via mirrored entry docs). It ships three independently installable plugins:
 
 | Plugin | Agents | What it does |
 |--------|--------|--------------|
@@ -19,7 +19,7 @@ Each plugin is **self-contained**: its own agents, skills, vault template, and C
 #      psilodigital-clients  → _clients/ (per-client folders, sensitive)
 
 # 2. From Claude Code, add this repo as a local marketplace:
-/plugin marketplace add /path/to/psilodigital-business-agent-system
+/plugin marketplace add /path/to/psilodigital-plugins
 
 # 3. Install one or more plugins:
 /plugin install sales@psilodigital

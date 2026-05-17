@@ -1,8 +1,8 @@
 <!-- Gemini CLI: this file mirrors CLAUDE.md so Gemini reads the same instructions. All three (CLAUDE.md, AGENTS.md, GEMINI.md) stay in sync. -->
 
-# Psilodigital Business Agent System — Plugin Marketplace
+# psilodigital-plugins
 
-This repository is a Claude Code / Codex CLI / Gemini CLI plugin marketplace for Psilodigital. It ships three independently installable plugins: **sales**, **proposals**, **delivery**.
+Psilodigital's plugin marketplace for Claude Code, Codex CLI, and Gemini CLI. It ships three independently installable plugins: **sales**, **proposals**, **delivery**.
 
 See [CLAUDE.md](CLAUDE.md) or [AGENTS.md](AGENTS.md) for the full marketplace overview, install instructions, skill taxonomy, and global rules.
 

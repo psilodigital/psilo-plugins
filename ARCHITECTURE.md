@@ -1,6 +1,6 @@
 # Architecture Overview
 
-This repository is a **Claude Code / Codex / Gemini plugin marketplace**. It ships three independently installable plugins (`sales`, `proposals`, `delivery`), each self-contained with its own agents, skills, and vault template.
+This repository (`psilodigital-plugins`) is a Claude Code / Codex CLI / Gemini CLI **plugin marketplace**. It ships three independently installable plugins (`sales`, `proposals`, `delivery`), each self-contained with its own agents, skills, and vault template.
 
 ## Six layers
 

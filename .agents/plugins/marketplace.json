@@ -1,8 +1,8 @@
 {
   "name": "psilodigital",
   "interface": {
-    "displayName": "Psilodigital Business Agent System",
-    "shortDescription": "AI agents for Psilodigital's consulting workflows — sales, proposals, and delivery"
+    "displayName": "Psilodigital Plugins",
+    "shortDescription": "Psilodigital's plugin marketplace — sales, proposals, and delivery agents for consulting work"
   },
   "plugins": [
     {

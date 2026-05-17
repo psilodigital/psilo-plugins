@@ -5,8 +5,8 @@
     "email": "info@psilodigital.com"
   },
   "metadata": {
-    "displayName": "Psilodigital Business Agent System",
-    "description": "AI agents for Psilodigital's consulting workflows — sales, proposals, and delivery. Install one domain at a time.",
+    "displayName": "Psilodigital Plugins",
+    "description": "Psilodigital's plugin marketplace — sales, proposals, and delivery agents for consulting work. Install one or all three.",
     "version": "0.1.0"
   },
   "plugins": [
