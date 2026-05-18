@@ -2,6 +2,9 @@
 name: op-write-followup
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Generate a post-meeting follow-up email from raw meeting notes. Extracts decisions,
   next steps (with owner and date), and open questions. Triggers:

@@ -4,6 +4,13 @@ Every plugin under `psilo-plugins/` MUST follow this contract. The contract is w
 
 If a PR adds a plugin or skill that does not satisfy this contract, it is not ready to merge.
 
+Machine-readable schemas live in `schemas/`:
+
+- `schemas/agent.schema.json` — validates `agents/<role>.md` frontmatter
+- `schemas/skill.schema.json` — validates `skills/<skill>/SKILL.md` frontmatter
+- `schemas/workflow.schema.json` — validates explicit workflow manifests when a workflow needs to be represented outside the skill call graph
+- `schemas/pack.schema.json` — validates future pack manifests for bundled templates, examples, and reusable presets
+
 ---
 
 ## 1. Directory shape
@@ -87,6 +94,9 @@ Every `SKILL.md` MUST begin with YAML frontmatter:
 name: flow-research-prospect
 type: flow                              # op | flow | task | app
 version: 0.1.0
+status: active                          # draft | active | deprecated
+risk_level: low                         # low | medium | high
+requires_approval: false                # true only when running the skill performs or prepares a gated external action
 description: |
   Public-signal research on a prospect company. Triggers: "research [company]",
   "look up [prospect]". Returns structured findings — never fabricates.
@@ -109,16 +119,21 @@ Field rules:
 | `name` | yes | Must equal the directory name. |
 | `type` | yes | One of `op`, `flow`, `task`, `app`. |
 | `version` | yes | Semver. Bump on contract change. |
+| `status` | yes | One of `draft`, `active`, `deprecated`. |
 | `description` | yes | Multi-line ok. Include trigger phrases for ops. |
 | `user-invocable` | for ops | `true` only on `op-*`. Default `false` elsewhere. |
 | `called_by` | yes | Array of caller skill names. Empty for top-level ops. |
 | `calls` | yes | Array of called skill names. Empty for leaf tasks. |
 | `inputs` | yes | Array of named inputs. Suffix optional inputs with `?`. Empty `[]` if none. |
 | `outputs` | yes | Array of named outputs. Empty `[]` if side-effecting. |
+| `risk_level` | yes | One of `low`, `medium`, `high`; used by installers/UI/runtime policy. |
+| `requires_approval` | yes | Boolean. `true` means a human gate is required before the skill's side effect or recommended external action. |
 
 Claude Code's skill loader only reads `name` and `description`. The extra fields are ignored by the runtime but enforced by our contract — they make the skill graph machine-greppable for validators, docs generators, and future installers.
 
 The body of `SKILL.md` (after the closing `---`) is the human/LLM-readable instructions. Recommended H2 sections: `## What It Does`, `## Inputs`, `## Procedure`, `## Outputs`. The body must not duplicate the frontmatter fields as prose.
+
+In this repo, `name` is the stable machine identifier for skills and agents. Do not add a separate `id` field unless the whole manifest model is migrated.
 
 ---
 
@@ -129,6 +144,7 @@ The body of `SKILL.md` (after the closing `---`) is the human/LLM-readable instr
 name: sales-strategist
 plugin: sales
 version: 0.1.0
+status: active
 description: Owns prospect research through follow-up writing
 owns_skills:
   - op-prep-discovery-call
@@ -144,6 +160,7 @@ Field rules:
 | `name` | yes | Kebab-case. Must match the filename. |
 | `plugin` | yes | Plugin this agent belongs to. |
 | `version` | yes | Semver. |
+| `status` | yes | One of `draft`, `active`, `deprecated`. |
 | `description` | yes | One-line role summary. |
 | `owns_skills` | yes | Array of `op-*` skills this agent runs. Empty `[]` only for support agents. |
 
@@ -157,6 +174,7 @@ A reviewer checks:
 
 - [ ] Plugin folder matches §1 — required files present, no orphan files
 - [ ] Skill directory name matches `name` in frontmatter
+- [ ] Agent and skill frontmatter validate against `schemas/agent.schema.json` and `schemas/skill.schema.json`
 - [ ] Prefix matches `type` (e.g., `op-` directory ⇒ `type: op`)
 - [ ] `called_by` and `calls` reference skills that actually exist in this plugin
 - [ ] Every `op-*` has `user-invocable: true`
@@ -164,7 +182,7 @@ A reviewer checks:
 - [ ] Entry docs (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`) are present and mirrored
 - [ ] Vault template and structure files exist at the declared paths
 
-A future `scripts/lint-plugin.sh` will encode these checks. Not blocking today.
+A future `scripts/lint-plugin.sh` will encode these checks using the schemas in `schemas/`. Not blocking today.
 
 ---
 

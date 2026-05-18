@@ -2,6 +2,7 @@
 name: business-analyst
 plugin: proposals
 version: 0.1.0
+status: active
 description: |
   Business Analyst for Psilodigital. Turns messy client information into clear business
   understanding — operations maps, root-cause analysis, requirements, opportunity areas.

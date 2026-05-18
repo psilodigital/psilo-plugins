@@ -2,6 +2,9 @@
 name: flow-design-environments
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Produce an environment plan (dev/staging/prod) from scope and architecture. Includes
   cost estimates per environment, secret management approach, and access control. Flags

@@ -2,6 +2,9 @@
 name: flow-extract-meeting-notes
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Structure raw meeting notes into pain points, opportunities, decisions, next steps
   (with owner and date), and open questions. Distinguishes what was said from what was

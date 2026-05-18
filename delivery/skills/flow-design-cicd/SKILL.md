@@ -2,6 +2,9 @@
 name: flow-design-cicd
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Produce a CI/CD pipeline definition with reversible deployments. Every build runs
   tests, lint, and security scan. Automatic rollback on health-check failure. No

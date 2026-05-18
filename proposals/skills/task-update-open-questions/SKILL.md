@@ -2,6 +2,9 @@
 name: task-update-open-questions
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Manages open questions for a client — unknowns that need a human
   answer (us, client, legal, etc.) before the proposal can be finalized. Distinct

@@ -2,6 +2,9 @@
 name: flow-research-client
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Proposal-grade research on an existing client. Deeper than prospect research —
   focuses on operations maturity, data sources, team structure, prior tech decisions,

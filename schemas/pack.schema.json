@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psilodigital.com/schemas/pack.schema.json",
+  "title": "Psilodigital Pack Manifest",
+  "description": "Validates reusable pack manifests for bundled plugin assets, vault templates, prompt scaffolding, examples, or industry-specific presets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "type",
+    "version",
+    "status",
+    "description",
+    "plugins",
+    "contents",
+    "risk_level",
+    "requires_approval"
+  ],
+  "properties": {
+    "name": {
+      "$ref": "#/$defs/kebabIdentifier"
+    },
+    "type": {
+      "const": "pack"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "description": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "plugins": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/kebabIdentifier"
+      },
+      "uniqueItems": true
+    },
+    "contents": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "agents": {
+          "$ref": "#/$defs/relativePathList"
+        },
+        "skills": {
+          "$ref": "#/$defs/relativePathList"
+        },
+        "workflows": {
+          "$ref": "#/$defs/relativePathList"
+        },
+        "vault_templates": {
+          "$ref": "#/$defs/relativePathList"
+        },
+        "references": {
+          "$ref": "#/$defs/relativePathList"
+        },
+        "examples": {
+          "$ref": "#/$defs/relativePathList"
+        }
+      }
+    },
+    "risk_level": {
+      "$ref": "#/$defs/riskLevel"
+    },
+    "requires_approval": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "kebabIdentifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^(?:/|[A-Za-z]:|.*\\.\\./)"
+      }
+    },
+    "relativePathList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relativePath"
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    }
+  }
+}

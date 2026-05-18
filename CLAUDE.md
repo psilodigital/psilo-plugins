@@ -53,7 +53,7 @@ All plugin skills follow a four-layer pattern:
 | **flow-** | Multi-step internals called by ops | `flow-research-client`, `flow-build-scope` |
 | **task-** | Atomic primitives called by flows | `task-flag-assumption`, `task-update-open-loops` |
 
-When creating a new skill, place it inside the relevant plugin's `skills/` folder with this prefix convention.
+When creating a new skill, place it inside the relevant plugin's `skills/` folder with this prefix convention and include schema-valid frontmatter: `name`, `type`, `version`, `status`, `description`, `user-invocable`, `called_by`, `calls`, `inputs`, `outputs`, `risk_level`, and `requires_approval`. Declare trigger phrases for ops in the description.
 
 ## Global rules (apply across all plugins)
 

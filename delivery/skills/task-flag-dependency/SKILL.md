@@ -2,6 +2,9 @@
 name: task-flag-dependency
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Appends a dependency entry to open-loops.md. Every dependency has
   a named owner and a follow-up date — no "waiting on the client" without a name and

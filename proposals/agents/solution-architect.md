@@ -2,6 +2,7 @@
 name: solution-architect
 plugin: proposals
 version: 0.1.0
+status: active
 description: |
   Solution Architect for Psilodigital proposals (scope-focused). Translates business
   requirements into technical scope — capabilities, data model, integrations, roles,

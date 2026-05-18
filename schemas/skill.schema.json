@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psilodigital.com/schemas/skill.schema.json",
+  "title": "Psilodigital Skill Frontmatter",
+  "description": "Validates YAML frontmatter for <plugin>/skills/<skill>/SKILL.md files.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "type",
+    "version",
+    "status",
+    "description",
+    "user-invocable",
+    "called_by",
+    "calls",
+    "inputs",
+    "outputs",
+    "risk_level",
+    "requires_approval"
+  ],
+  "properties": {
+    "name": {
+      "$ref": "#/$defs/skillName"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "op",
+        "flow",
+        "task",
+        "app"
+      ]
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "description": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "user-invocable": {
+      "type": "boolean"
+    },
+    "called_by": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/skillName"
+      },
+      "uniqueItems": true
+    },
+    "calls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/skillName"
+      },
+      "uniqueItems": true
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ioNameWithOptionalMarker"
+      },
+      "uniqueItems": true
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ioName"
+      },
+      "uniqueItems": true
+    },
+    "risk_level": {
+      "$ref": "#/$defs/riskLevel"
+    },
+    "requires_approval": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "op"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "name": {
+            "pattern": "^op-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          },
+          "user-invocable": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "flow"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "name": {
+            "pattern": "^flow-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          },
+          "user-invocable": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "task"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "name": {
+            "pattern": "^task-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          },
+          "user-invocable": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "app"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "name": {
+            "pattern": "^app-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          },
+          "user-invocable": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "skillName": {
+      "type": "string",
+      "pattern": "^(?:op|flow|task|app)-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "ioName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "ioNameWithOptionalMarker": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\?)?$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    }
+  }
+}

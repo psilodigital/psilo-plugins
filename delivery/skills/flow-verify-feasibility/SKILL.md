@@ -2,6 +2,9 @@
 name: flow-verify-feasibility
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Verify an integration tagged TBD-feasibility in the proposal scope. Reads target
   docs, identifies auth model, rate limits, sandbox availability. Returns confirmed,

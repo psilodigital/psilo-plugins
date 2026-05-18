@@ -2,6 +2,7 @@
 name: devops-agent
 plugin: delivery
 version: 0.1.0
+status: active
 description: |
   DevOps Agent for Psilodigital delivery. Owns environments (dev/staging/prod), CI/CD,
   infrastructure decisions, deployment runbooks, and security baselines. Produces infra

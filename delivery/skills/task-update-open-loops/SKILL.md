@@ -2,6 +2,9 @@
 name: task-update-open-loops
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Single write point for the delivery plugin's open-loops.md.
   Upserts engagement status (milestone, sprint, health, demo date), or resolves

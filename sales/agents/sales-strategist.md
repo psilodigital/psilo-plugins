@@ -2,6 +2,7 @@
 name: sales-strategist
 plugin: sales
 version: 0.1.0
+status: active
 description: |
   Sales Strategist for Psilodigital. Researches prospects, prepares discovery call angles,
   drafts cold and warm outreach, and writes post-meeting follow-ups in Psilodigital's tone

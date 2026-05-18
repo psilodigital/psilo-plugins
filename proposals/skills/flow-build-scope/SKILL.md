@@ -2,6 +2,9 @@
 name: flow-build-scope
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   MVP scope construction. Translates business requirements and research into a
   delivery-ready scope: capabilities (≤7), data model (≤7 entities), integrations with

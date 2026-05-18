@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psilodigital.com/schemas/agent.schema.json",
+  "title": "Psilodigital Agent Frontmatter",
+  "description": "Validates YAML frontmatter for <plugin>/agents/<role>.md files.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "plugin",
+    "version",
+    "status",
+    "description",
+    "owns_skills"
+  ],
+  "properties": {
+    "name": {
+      "$ref": "#/$defs/kebabIdentifier"
+    },
+    "plugin": {
+      "$ref": "#/$defs/kebabIdentifier"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "description": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "owns_skills": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/opSkillName"
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "kebabIdentifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "opSkillName": {
+      "type": "string",
+      "pattern": "^op-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    }
+  }
+}

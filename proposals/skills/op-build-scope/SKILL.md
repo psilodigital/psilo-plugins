@@ -2,6 +2,9 @@
 name: op-build-scope
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Produce a standalone MVP scope document for a client (when the full proposal is
   deferred — paid scoping engagement, or post-discovery technical alignment). Triggers:

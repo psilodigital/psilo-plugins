@@ -2,6 +2,9 @@
 name: op-status-update
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Generate a weekly status update from sprint progress. Summarizes what shipped,
   what's next, risks (with one-line plans), and decisions needed. Client-facing and

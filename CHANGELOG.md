@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `schemas/agent.schema.json`, `schemas/skill.schema.json`, `schemas/workflow.schema.json`, `schemas/pack.schema.json` — machine-readable JSON Schemas for validating plugin agents, skills, future explicit workflows, and future packs.
 - `PLUGIN-CONTRACT.md` — formal plugin folder + frontmatter contract. Defines required directory shape, skill prefix taxonomy, `plugin.json` schema (with `agents[]`, `skills`, `vault`, `entry_docs`), strict YAML frontmatter schema for `SKILL.md` (with `name`, `type`, `version`, `description`, `user-invocable`, `called_by`, `calls`, `inputs`, `outputs`) and `agents/<role>.md` (with `name`, `plugin`, `version`, `description`, `owns_skills`), validation checklist, and SemVer policy.
 - `CONTRIBUTING.md` — contribution rules, what does/does-not belong in the repo, skill and plugin authoring guide, PR checklist, versioning policy.
 - `CHANGELOG.md` — this file, seeded with the 0.1.0 baseline.
@@ -16,8 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `README.md` — added explicit "What this repo is / is NOT" framing identifying the repo as Psilodigital's reusable intelligence layer.
 - `ARCHITECTURE.md` — added IS / IS NOT comparison table reinforcing the separation between IP and runtime/client data.
 - All 6 `plugin.json` manifests (3 Claude, 3 Codex) — expanded with `agents[]`, `skills`, `vault.{template,structure}`, `entry_docs[]` so the manifest declares plugin contents instead of relying on convention.
-- All 6 `agents/<role>.md` files (sales-strategist, business-analyst, proposals/solution-architect, delivery-manager, delivery/solution-architect, devops-agent) — strict YAML frontmatter conforming to the contract, with `plugin`, `version`, `owns_skills` added.
-- All 27 `SKILL.md` files across the three plugins — strict YAML frontmatter conforming to the contract: `name`, `type`, `version`, `description`, `user-invocable` (true on ops only), `called_by`, `calls`, `inputs`, `outputs`. Bodies untouched.
+- All 6 `agents/<role>.md` files (sales-strategist, business-analyst, proposals/solution-architect, delivery-manager, delivery/solution-architect, devops-agent) — strict YAML frontmatter conforming to the contract, with `plugin`, `version`, `status`, `owns_skills` added.
+- All 27 `SKILL.md` files across the three plugins — strict YAML frontmatter conforming to the contract: `name`, `type`, `version`, `status`, `description`, `user-invocable` (true on ops only), `called_by`, `calls`, `inputs`, `outputs`, `risk_level`, `requires_approval`. Bodies untouched.
 
 ## [0.1.0] — 2026-05-18
 

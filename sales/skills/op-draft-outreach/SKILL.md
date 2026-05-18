@@ -2,6 +2,9 @@
 name: op-draft-outreach
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Draft cold or warm outreach (email or LinkedIn) to a prospect. Anchors on a specific
   observation, applies Psilodigital tone (warm, concise, ≤120 words for cold), proposes

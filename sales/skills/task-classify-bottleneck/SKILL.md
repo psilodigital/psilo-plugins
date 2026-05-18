@@ -2,6 +2,9 @@
 name: task-classify-bottleneck
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Given a described symptom (e.g. "they answer the same 5 questions on
   email every week"), classify it against documented SME bottleneck patterns from

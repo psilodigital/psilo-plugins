@@ -2,6 +2,9 @@
 name: op-build-proposal
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Produce a full proposal draft for a named client. Orchestrates business analysis
   (current state → problem → outcome) and technical scope (capabilities, integrations,

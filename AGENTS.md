@@ -74,4 +74,4 @@ These rules are baked into each plugin's agent definition. Psilodigital-specific
 
 **New plugin:** copy an existing plugin folder (e.g. `cp -r sales/ new-plugin/`), then update `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `CLAUDE.md`/`AGENTS.md`/`GEMINI.md`, `agents/`, `skills/`, and `vault/config.md` + `vault/vault-structure.json`. Register in both root marketplace files.
 
-**New skill:** choose the layer prefix (`app-` / `op-` / `flow-` / `task-`), create `<plugin>/skills/<skill-name>/SKILL.md`, declare `called_by` (for flows/tasks) and trigger phrases (for ops) in frontmatter.
+**New skill:** choose the layer prefix (`app-` / `op-` / `flow-` / `task-`), create `<plugin>/skills/<skill-name>/SKILL.md`, and include schema-valid frontmatter: `name`, `type`, `version`, `status`, `description`, `user-invocable`, `called_by`, `calls`, `inputs`, `outputs`, `risk_level`, and `requires_approval`. Declare trigger phrases for ops in the description.

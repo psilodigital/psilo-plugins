@@ -2,6 +2,9 @@
 name: op-scope-to-delivery
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Convert an approved scope into a delivery plan — milestones, dependencies, integration
   feasibility verification, environment plan, CI/CD plan, and proposed GitHub issue

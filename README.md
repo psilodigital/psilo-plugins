@@ -14,7 +14,7 @@ It contains, and only contains:
 - Reusable skills (`<plugin>/skills/op-* | flow-* | task-* | app-*`)
 - Reusable workflows (composed via the skill taxonomy)
 - Industry packs (vault templates, prompt scaffolding)
-- Schemas (`vault-structure.json`, plugin + marketplace manifests)
+- Schemas (`schemas/*.schema.json`, `vault-structure.json`, plugin + marketplace manifests)
 - Examples and templates (`vault/config.md`, mirrored entry docs)
 
 ## What this repo is NOT

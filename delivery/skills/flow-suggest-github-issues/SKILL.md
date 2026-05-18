@@ -2,6 +2,9 @@
 name: flow-suggest-github-issues
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Translate milestones into proposed GitHub issue structure — titles, labels,
   dependencies, milestones, acceptance criteria. Produces a draft file; never creates

@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psilodigital.com/schemas/workflow.schema.json",
+  "title": "Psilodigital Workflow Manifest",
+  "description": "Validates explicit workflow manifests when a composed process needs to be represented outside SKILL.md call graphs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "plugin",
+    "type",
+    "version",
+    "status",
+    "description",
+    "entrypoint",
+    "steps",
+    "inputs",
+    "outputs",
+    "risk_level",
+    "requires_approval"
+  ],
+  "properties": {
+    "name": {
+      "$ref": "#/$defs/kebabIdentifier"
+    },
+    "plugin": {
+      "$ref": "#/$defs/kebabIdentifier"
+    },
+    "type": {
+      "const": "workflow"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "description": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "entrypoint": {
+      "$ref": "#/$defs/opSkillName"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workflowStep"
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ioNameWithOptionalMarker"
+      },
+      "uniqueItems": true
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ioName"
+      },
+      "uniqueItems": true
+    },
+    "risk_level": {
+      "$ref": "#/$defs/riskLevel"
+    },
+    "requires_approval": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "kebabIdentifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "opSkillName": {
+      "type": "string",
+      "pattern": "^op-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "skillName": {
+      "type": "string",
+      "pattern": "^(?:op|flow|task|app)-[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "ioName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "ioNameWithOptionalMarker": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\?)?$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "workflowStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "uses",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/kebabIdentifier"
+        },
+        "uses": {
+          "$ref": "#/$defs/skillName"
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "optional": {
+          "type": "boolean",
+          "default": false
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ioNameWithOptionalMarker"
+          },
+          "uniqueItems": true
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ioName"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

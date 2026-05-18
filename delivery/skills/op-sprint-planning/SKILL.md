@@ -2,6 +2,9 @@
 name: op-sprint-planning
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Plan the next sprint from the active delivery plan. Pulls the next milestone's tasks,
   estimates capacity (15% buffer), sets a sprint goal, defines done, lists demo contents.

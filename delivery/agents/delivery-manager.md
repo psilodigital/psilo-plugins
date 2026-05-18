@@ -2,6 +2,7 @@
 name: delivery-manager
 plugin: delivery
 version: 0.1.0
+status: active
 description: |
   Delivery Manager for Psilodigital. Owns approved-scope → shipped engagement:
   milestone planning, sprint cadence, dependency tracking, status reporting, risk

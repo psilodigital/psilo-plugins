@@ -2,6 +2,9 @@
 name: flow-break-milestones
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Decompose approved scope capabilities into 2-week milestones, each with a demoable
   deliverable. Identifies inter-milestone dependencies. Default 4–8 week MVP.

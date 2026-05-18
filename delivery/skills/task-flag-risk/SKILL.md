@@ -2,6 +2,9 @@
 name: task-flag-risk
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Appends a risk entry to open-loops.md with severity (low/medium/
   high), owner, and mitigation plan. No risk without a plan. High severity escalates

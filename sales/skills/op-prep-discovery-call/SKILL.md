@@ -2,6 +2,9 @@
 name: op-prep-discovery-call
 type: op
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Produce a discovery meeting brief for a named prospect. Researches public signals,
   loads existing client context, applies the common-SME-bottlenecks lens, generates

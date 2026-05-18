@@ -49,6 +49,7 @@ Sensitive material lives in the companion repos (`psilodigital-vault`, `psilodig
 ## Review checklist (PR author + reviewer)
 
 - [ ] No client data, credentials, secrets, or run output
+- [ ] Agent and skill frontmatter matches the machine-readable schemas in `schemas/`
 - [ ] Skill prefix matches its layer (`op-` / `flow-` / `task-` / `app-`)
 - [ ] Entry docs are mirrored across `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`
 - [ ] Manifest version bumped if behavior or shape changed

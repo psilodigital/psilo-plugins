@@ -2,6 +2,9 @@
 name: task-update-open-loops
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Single write point for open-loops.md. Upserts a prospect's stage and
   next step, or resolves an assumption. Never deletes — moves to Resolved for audit.

@@ -2,6 +2,9 @@
 name: flow-draft-proposal
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Section-by-section proposal authoring. Takes business context, research findings,
   and a built scope; produces the proposal narrative with explicit assumptions and a

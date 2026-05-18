@@ -2,6 +2,9 @@
 name: flow-research-prospect
 type: flow
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Public-signal research on a prospect company (website observations, review patterns,
   hiring and press signals, observed operational issues). Returns structured findings —

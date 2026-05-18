@@ -2,6 +2,9 @@
 name: task-flag-assumption
 type: task
 version: 0.1.0
+status: active
+risk_level: low
+requires_approval: false
 description: |
   Atomic primitive. Appends an assumption flag to open-loops.md with severity and a
   recommended verification step. Used by any op or flow when something is inferred

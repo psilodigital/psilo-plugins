@@ -2,6 +2,7 @@
 name: solution-architect
 plugin: delivery
 version: 0.1.0
+status: active
 description: |
   Solution Architect for Psilodigital delivery (implementation-focused). Owns runtime
   architecture decisions, integration verification, and implementation task breakdown.
