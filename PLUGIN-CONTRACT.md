@@ -195,6 +195,8 @@ Packs bundle existing plugin assets into product-facing offerings. The canonical
 
 Pack entries may use a customer-friendly `name` that differs from the source asset's internal name, as long as `source` points to the actual file. For example, `delivery-planner` can map to `delivery/agents/delivery-manager.md`.
 
+Every pack MUST include a pack-level `CHANGELOG.md` next to `pack.yaml`. Pack changelogs track client-relevant changes and whether updates may affect local overrides.
+
 ---
 
 ## 8. Versioning
@@ -206,6 +208,15 @@ Plugin and skill versions follow [SemVer](https://semver.org/):
 - **PATCH** — copy edits, doc fixes, body changes that do not change the contract
 
 When a skill's `inputs` or `outputs` change, bump that skill's `version` AND the parent plugin's `version`.
+
+Pack versions use semantic-ish versioning:
+
+- `0.1.0` — first experimental version
+- `0.2.0` — new skills, workflows, agents, or pack aliases
+- `0.2.1` — fixes, documentation improvements, source mapping corrections, or prompt improvements that do not change the pack contract
+- `1.0.0` — stable client-ready pack
+
+When a pack's agents, skills, workflows, aliases, inputs, outputs, or source mappings change, update the pack's `version` in `pack.yaml` and add an entry to that pack's `CHANGELOG.md`.
 
 ---
 

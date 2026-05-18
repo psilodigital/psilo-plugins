@@ -49,7 +49,7 @@ Sensitive material lives in the companion repos (`psilodigital-vault`, `psilodig
 
 ## Adding a new pack
 
-1. Create `packs/<pack-name>/pack.yaml` and `packs/<pack-name>/README.md`.
+1. Create `packs/<pack-name>/pack.yaml`, `packs/<pack-name>/README.md`, and `packs/<pack-name>/CHANGELOG.md`.
 2. Use product-facing names for pack entries only when they map clearly to real source files.
 3. Make sure every `source` path exists in this repo.
 4. Add the pack to the Packs table in `README.md`.
@@ -74,6 +74,15 @@ This repo follows [Semantic Versioning](https://semver.org/):
 - **PATCH** — copy fixes, doc fixes, internal refactors with no contract change
 
 The marketplace version in `.claude-plugin/marketplace.json` is the source of truth.
+
+Packs use semantic-ish versioning:
+
+- `0.1.0` — first experimental version
+- `0.2.0` — new skills, workflows, agents, or pack aliases
+- `0.2.1` — fixes, documentation improvements, source mapping corrections, or prompt improvements that do not change the pack contract
+- `1.0.0` — stable client-ready pack
+
+When a pack changes, update `packs/<pack>/pack.yaml` and `packs/<pack>/CHANGELOG.md` in the same PR so clients can assess update impact.
 
 ## Reporting issues
 

@@ -46,7 +46,7 @@ Packs group plugin capabilities into product-facing bundles that match how clien
 
 | Pack | What it bundles |
 |---|---|
-| **[core-sme-ops](packs/core-sme-ops/)** | Sales, discovery, proposal, scope, delivery planning, and follow-up workflows for SME operations work |
+| **[core-sme-ops](packs/core-sme-ops/)** | `v0.1.0` experimental pack for sales, discovery, proposal, scope, delivery planning, and follow-up workflows for SME operations work |
 
 ## Install
 

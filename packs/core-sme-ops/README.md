@@ -34,6 +34,19 @@ Clients should be able to think in terms of one installable capability:
 | `proposal-generation` | `client-research` -> `scope-builder` -> `proposal-writer` | Proposal draft and MVP scope. |
 | `scope-to-delivery` | `scope-builder` -> `delivery-breakdown` | Delivery milestones from approved scope. |
 
+## Versioning
+
+Current version: `0.1.0`.
+
+Pack versions use semantic-ish versioning:
+
+- `0.1.0` = first experimental version
+- `0.2.0` = new skills, workflows, agents, or pack aliases
+- `0.2.1` = fixes, documentation improvements, source mapping corrections, or prompt improvements that do not change the pack contract
+- `1.0.0` = stable client-ready pack
+
+See [CHANGELOG.md](CHANGELOG.md) before updating an installed pack, especially if a client has local overrides.
+
 ## Boundaries
 
 This pack does not send communications, create external issues, change client systems, or claim integration feasibility without human approval. It drafts, structures, and plans; the human reviews and approves external actions.
