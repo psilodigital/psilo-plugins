@@ -1,0 +1,64 @@
+name: core-sme-ops
+type: pack
+version: 0.1.0
+status: active
+description: Reusable SME operations pack for sales, discovery, proposals, scope, delivery planning, and follow-up.
+plugins:
+  - sales
+  - proposals
+  - delivery
+contents:
+  agents:
+    - name: sales-strategist
+      source: sales/agents/sales-strategist.md
+      description: Owns prospect research, discovery call prep, outreach, and follow-up drafts.
+    - name: business-analyst
+      source: proposals/agents/business-analyst.md
+      description: Turns messy client context into clear business understanding and proposal inputs.
+    - name: solution-architect
+      source: proposals/agents/solution-architect.md
+      description: Translates business needs into feasible MVP scope and integration assumptions.
+    - name: delivery-planner
+      source: delivery/agents/delivery-manager.md
+      description: Pack-facing alias for delivery-manager; turns approved scope into milestones, sprints, and status cadence.
+  skills:
+    - name: client-research
+      source: proposals/skills/flow-research-client/SKILL.md
+      description: Research and structure client context before proposal or scope work.
+    - name: discovery-call-prep
+      source: sales/skills/op-prep-discovery-call/SKILL.md
+      description: Prepare a discovery meeting brief with facts, assumptions, risks, and questions.
+    - name: proposal-writer
+      source: proposals/skills/flow-draft-proposal/SKILL.md
+      description: Draft a proposal from research, meeting notes, and scope.
+    - name: scope-builder
+      source: proposals/skills/flow-build-scope/SKILL.md
+      description: Convert business goals and notes into an MVP scope.
+    - name: delivery-breakdown
+      source: delivery/skills/flow-break-milestones/SKILL.md
+      description: Break approved scope into practical delivery milestones.
+    - name: follow-up-email
+      source: sales/skills/op-write-followup/SKILL.md
+      description: Draft a post-meeting follow-up email from meeting notes.
+  workflows:
+    - name: client-meeting-prep
+      description: Research a client or prospect and prepare a discovery call brief.
+      entrypoint: discovery-call-prep
+      steps:
+        - client-research
+        - discovery-call-prep
+    - name: proposal-generation
+      description: Turn client context and meeting notes into scope and a proposal draft.
+      entrypoint: proposal-writer
+      steps:
+        - client-research
+        - scope-builder
+        - proposal-writer
+    - name: scope-to-delivery
+      description: Convert approved scope into a delivery breakdown for execution planning.
+      entrypoint: delivery-breakdown
+      steps:
+        - scope-builder
+        - delivery-breakdown
+risk_level: low
+requires_approval: false

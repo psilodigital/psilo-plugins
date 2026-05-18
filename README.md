@@ -13,7 +13,7 @@ It contains, and only contains:
 - Reusable AI employee definitions (`<plugin>/agents/*`)
 - Reusable skills (`<plugin>/skills/op-* | flow-* | task-* | app-*`)
 - Reusable workflows (composed via the skill taxonomy)
-- Industry packs (vault templates, prompt scaffolding)
+- Industry packs (`packs/*`) that bundle reusable agents, skills, workflows, vault templates, and prompt scaffolding
 - Schemas (`schemas/*.schema.json`, `vault-structure.json`, plugin + marketplace manifests)
 - Examples and templates (`vault/config.md`, mirrored entry docs)
 
@@ -39,6 +39,14 @@ If you are looking for a client workspace, a runtime app, or a UI — this is no
 | **[delivery](delivery/)** | Delivery Manager + Solution Architect + DevOps | Approved scope → milestones, sprints, status updates, GitHub issue structure |
 
 Plugins are independent — install one or all three.
+
+## Packs
+
+Packs group plugin capabilities into product-facing bundles that match how clients think about the work.
+
+| Pack | What it bundles |
+|---|---|
+| **[core-sme-ops](packs/core-sme-ops/)** | Sales, discovery, proposal, scope, delivery planning, and follow-up workflows for SME operations work |
 
 ## Install
 

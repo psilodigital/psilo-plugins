@@ -19,8 +19,9 @@ This separation is load-bearing: it is what lets us improve the IP once and ship
 2. **Plugin Layer** — `<plugin>/.claude-plugin/plugin.json`, `<plugin>/.codex-plugin/plugin.json`. Per-plugin manifests + entry docs (`CLAUDE.md` / `AGENTS.md` / `GEMINI.md` mirrored).
 3. **Role Layer** — `<plugin>/agents/<role>.md`. Persona definitions per plugin.
 4. **Capability Layer** — `<plugin>/skills/<skill>/SKILL.md`. Four-layer taxonomy: `app-` (data connectors), `op-` (user-facing entry points), `flow-` (multi-step internals), `task-` (atomic primitives).
-5. **Knowledge Layer** — external user vault at `~/Documents/psilodigital/vault/` containing `_company/` (shared positioning + tone), `_clients/<client>/` (sensitive per-client data), and per-plugin sub-vaults (`sales/`, `proposals/`, `delivery/`). Sourced from the companion `psilodigital-vault` and `psilodigital-clients` repos.
-6. **Control Layer** — repo-level `SYSTEM.md` and per-plugin `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` mirrors. Psilodigital-specific governance, MCP setup, and templates live in the companion `psilodigital-vault` repo.
+5. **Pack Layer** — `packs/<pack>/pack.yaml`. Product-facing bundles that compose agents, skills, and workflows across plugins for install/update flows.
+6. **Knowledge Layer** — external user vault at `~/Documents/psilodigital/vault/` containing `_company/` (shared positioning + tone), `_clients/<client>/` (sensitive per-client data), and per-plugin sub-vaults (`sales/`, `proposals/`, `delivery/`). Sourced from the companion `psilodigital-vault` and `psilodigital-clients` repos.
+7. **Control Layer** — repo-level `SYSTEM.md` and per-plugin `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` mirrors. Psilodigital-specific governance, MCP setup, and templates live in the companion `psilodigital-vault` repo.
 
 ## Key separation: code vs. data
 

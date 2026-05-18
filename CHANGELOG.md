@@ -8,12 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `packs/core-sme-ops/` — first official pack, bundling SME operations agents, product-facing skill aliases, and workflows for meeting prep, proposal generation, and scope-to-delivery planning.
 - `schemas/agent.schema.json`, `schemas/skill.schema.json`, `schemas/workflow.schema.json`, `schemas/pack.schema.json` — machine-readable JSON Schemas for validating plugin agents, skills, future explicit workflows, and future packs.
 - `PLUGIN-CONTRACT.md` — formal plugin folder + frontmatter contract. Defines required directory shape, skill prefix taxonomy, `plugin.json` schema (with `agents[]`, `skills`, `vault`, `entry_docs`), strict YAML frontmatter schema for `SKILL.md` (with `name`, `type`, `version`, `description`, `user-invocable`, `called_by`, `calls`, `inputs`, `outputs`) and `agents/<role>.md` (with `name`, `plugin`, `version`, `description`, `owns_skills`), validation checklist, and SemVer policy.
 - `CONTRIBUTING.md` — contribution rules, what does/does-not belong in the repo, skill and plugin authoring guide, PR checklist, versioning policy.
 - `CHANGELOG.md` — this file, seeded with the 0.1.0 baseline.
 
 ### Changed
+- `schemas/pack.schema.json` — pack contents now support structured entries with product-facing `name`, real repo `source`, and optional `description`.
 - `README.md` — added explicit "What this repo is / is NOT" framing identifying the repo as Psilodigital's reusable intelligence layer.
 - `ARCHITECTURE.md` — added IS / IS NOT comparison table reinforcing the separation between IP and runtime/client data.
 - All 6 `plugin.json` manifests (3 Claude, 3 Codex) — expanded with `agents[]`, `skills`, `vault.{template,structure}`, `entry_docs[]` so the manifest declares plugin contents instead of relying on convention.

@@ -42,6 +42,8 @@ When working **at the repo level** (adding a plugin, updating cross-plugin rules
 
 To add a new plugin: copy an existing plugin folder (e.g. `cp -r sales/ new-plugin/`), edit the manifests, agents, and skills, then register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 
+To add a new pack: create `packs/<pack-name>/pack.yaml` and `README.md`. The pack manifest must validate against `schemas/pack.schema.json`, and each entry's `source` must point to a real repo file.
+
 ## Skill taxonomy
 
 All plugin skills follow a four-layer pattern:
@@ -54,6 +56,8 @@ All plugin skills follow a four-layer pattern:
 | **task-** | Atomic primitives called by flows | `task-flag-assumption`, `task-update-open-loops` |
 
 When creating a new skill, place it inside the relevant plugin's `skills/` folder with this prefix convention and include schema-valid frontmatter: `name`, `type`, `version`, `status`, `description`, `user-invocable`, `called_by`, `calls`, `inputs`, `outputs`, `risk_level`, and `requires_approval`. Declare trigger phrases for ops in the description.
+
+When creating a new pack, use product-facing names only when they map clearly to real source files.
 
 ## Global rules (apply across all plugins)
 

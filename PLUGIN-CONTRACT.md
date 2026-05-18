@@ -32,6 +32,8 @@ Machine-readable schemas live in `schemas/`:
     └── vault-structure.json      REQUIRED — declares user-vault shape
 ```
 
+Pack manifests live outside plugin folders under `packs/<pack>/pack.yaml`. A pack is allowed to compose assets across multiple plugins, but each `source` path must point to a real file in this repo.
+
 Optional, only when actually needed:
 
 - `<plugin>/skills/<skill>/templates/` — output templates referenced by the skill
@@ -181,12 +183,21 @@ A reviewer checks:
 - [ ] `plugin.json` `agents[]` lists every file in `agents/`
 - [ ] Entry docs (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`) are present and mirrored
 - [ ] Vault template and structure files exist at the declared paths
+- [ ] Pack manifests validate against `schemas/pack.schema.json`, and every `source` path exists
 
 A future `scripts/lint-plugin.sh` will encode these checks using the schemas in `schemas/`. Not blocking today.
 
 ---
 
-## 7. Versioning
+## 7. Pack manifests
+
+Packs bundle existing plugin assets into product-facing offerings. The canonical example is `packs/core-sme-ops/pack.yaml`.
+
+Pack entries may use a customer-friendly `name` that differs from the source asset's internal name, as long as `source` points to the actual file. For example, `delivery-planner` can map to `delivery/agents/delivery-manager.md`.
+
+---
+
+## 8. Versioning
 
 Plugin and skill versions follow [SemVer](https://semver.org/):
 
@@ -198,7 +209,7 @@ When a skill's `inputs` or `outputs` change, bump that skill's `version` AND the
 
 ---
 
-## 8. What this contract does NOT cover
+## 9. What this contract does NOT cover
 
 - Skill content quality, prompt design, prose voice — see plugin-level `CLAUDE.md`
 - Brand voice and tone — see `psilodigital-vault` (`_company/`)

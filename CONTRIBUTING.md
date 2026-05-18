@@ -8,6 +8,7 @@ Only reusable, environment-agnostic IP:
 
 - Agent personas (`<plugin>/agents/*.md`)
 - Skills under the four-layer taxonomy (`op-`, `flow-`, `task-`, `app-`)
+- Packs under `packs/<pack>/` that bundle existing agents, skills, and workflows
 - Plugin and marketplace manifests
 - Vault **templates** (`<plugin>/vault/config.md`, `vault-structure.json`)
 - Cross-plugin governance (`SYSTEM.md`, `ARCHITECTURE.md`)
@@ -46,10 +47,18 @@ Sensitive material lives in the companion repos (`psilodigital-vault`, `psilodig
 3. Register the plugin in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 4. Add a row to the Plugins table in `README.md` and a `## Plugins` entry in `SYSTEM.md`.
 
+## Adding a new pack
+
+1. Create `packs/<pack-name>/pack.yaml` and `packs/<pack-name>/README.md`.
+2. Use product-facing names for pack entries only when they map clearly to real source files.
+3. Make sure every `source` path exists in this repo.
+4. Add the pack to the Packs table in `README.md`.
+
 ## Review checklist (PR author + reviewer)
 
 - [ ] No client data, credentials, secrets, or run output
 - [ ] Agent and skill frontmatter matches the machine-readable schemas in `schemas/`
+- [ ] Pack manifests validate against `schemas/pack.schema.json`, and every `source` path exists
 - [ ] Skill prefix matches its layer (`op-` / `flow-` / `task-` / `app-`)
 - [ ] Entry docs are mirrored across `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`
 - [ ] Manifest version bumped if behavior or shape changed

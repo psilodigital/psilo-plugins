@@ -46,22 +46,22 @@
       "minProperties": 1,
       "properties": {
         "agents": {
-          "$ref": "#/$defs/relativePathList"
+          "$ref": "#/$defs/packEntryList"
         },
         "skills": {
-          "$ref": "#/$defs/relativePathList"
+          "$ref": "#/$defs/packEntryList"
         },
         "workflows": {
-          "$ref": "#/$defs/relativePathList"
+          "$ref": "#/$defs/workflowEntryList"
         },
         "vault_templates": {
-          "$ref": "#/$defs/relativePathList"
+          "$ref": "#/$defs/packEntryList"
         },
         "references": {
-          "$ref": "#/$defs/relativePathList"
+          "$ref": "#/$defs/packEntryList"
         },
         "examples": {
-          "$ref": "#/$defs/relativePathList"
+          "$ref": "#/$defs/packEntryList"
         }
       }
     },
@@ -84,10 +84,65 @@
         "pattern": "^(?:/|[A-Za-z]:|.*\\.\\./)"
       }
     },
-    "relativePathList": {
+    "packEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "source"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/kebabIdentifier"
+        },
+        "source": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "packEntryList": {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/relativePath"
+        "$ref": "#/$defs/packEntry"
+      },
+      "uniqueItems": true
+    },
+    "workflowEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "description",
+        "entrypoint",
+        "steps"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/kebabIdentifier"
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "entrypoint": {
+          "$ref": "#/$defs/kebabIdentifier"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/kebabIdentifier"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "workflowEntryList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/workflowEntry"
       },
       "uniqueItems": true
     },
