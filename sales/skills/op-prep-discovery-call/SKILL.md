@@ -1,12 +1,25 @@
 ---
+name: op-prep-discovery-call
 type: op
-cadence: on-demand
-description: >
+version: 0.1.0
+description: |
   Produce a discovery meeting brief for a named prospect. Researches public signals,
-  loads existing client context, applies Psilodigital's common-SME-bottlenecks lens,
-  generates grouped discovery questions, and outputs a meeting brief with explicit
-  assumptions and risks. Triggers: "prep for discovery call with <client>",
-  "prep me for <client> meeting", "discovery brief for <client>".
+  loads existing client context, applies the common-SME-bottlenecks lens, generates
+  grouped discovery questions, and outputs a brief with explicit assumptions and risks.
+  Triggers: "prep for discovery call with <client>", "prep me for <client> meeting",
+  "discovery brief for <client>".
+user-invocable: true
+called_by: []
+calls:
+  - flow-research-prospect
+  - task-classify-bottleneck
+  - task-flag-assumption
+  - task-update-open-loops
+inputs:
+  - client_name
+  - website_url?
+outputs:
+  - discovery_brief_file
 ---
 
 # op-prep-discovery-call

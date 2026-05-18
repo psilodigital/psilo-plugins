@@ -1,10 +1,25 @@
 ---
+name: task-flag-assumption
 type: task
-called_by: [op-build-proposal, op-build-scope, flow-research-client, flow-draft-proposal, flow-build-scope]
-description: >
-  Atomic primitive. Writes an assumption flag to the proposals plugin's `open-loops.md`
-  with severity and a recommended verification step. Used whenever an op or flow
-  infers something not directly verified — keeps assumptions auditable in the proposal.
+version: 0.1.0
+description: |
+  Atomic primitive. Appends an assumption flag to the proposals plugin's open-loops.md
+  with severity and verification step. High-severity assumptions block proposal send.
+user-invocable: false
+called_by:
+  - op-build-proposal
+  - op-build-scope
+  - flow-research-client
+  - flow-draft-proposal
+  - flow-build-scope
+calls: []
+inputs:
+  - client
+  - assumption
+  - basis
+  - severity
+  - verification_step
+outputs: []
 ---
 
 # task-flag-assumption

@@ -1,12 +1,23 @@
 ---
+name: op-write-followup
 type: op
-cadence: on-demand
-description: >
-  Generate a post-meeting follow-up email from raw meeting notes. Extracts what was
-  discussed, decisions made, next steps, and open questions. Confirms timeline and
-  ownership for next steps. Applies Psilodigital tone (warm, concise, clear next step).
-  Triggers: "write follow-up for <client>", "post-meeting email <client>",
+version: 0.1.0
+description: |
+  Generate a post-meeting follow-up email from raw meeting notes. Extracts decisions,
+  next steps (with owner and date), and open questions. Triggers:
+  "write follow-up for <client>", "post-meeting email <client>",
   "follow-up email after <client> call".
+user-invocable: true
+called_by: []
+calls:
+  - flow-extract-meeting-notes
+  - task-flag-assumption
+  - task-update-open-loops
+inputs:
+  - client_name
+  - raw_notes?
+outputs:
+  - followup_draft_file
 ---
 
 # op-write-followup

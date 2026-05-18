@@ -1,10 +1,23 @@
 ---
+name: flow-draft-proposal
 type: flow
-called_by: [op-build-proposal]
-description: >
+version: 0.1.0
+description: |
   Section-by-section proposal authoring. Takes business context, research findings,
-  and a built scope; produces the proposal narrative with explicit assumptions and
-  pricing placeholder. Applies Psilodigital tone of voice strictly.
+  and a built scope; produces the proposal narrative with explicit assumptions and a
+  pricing placeholder range. Applies Psilodigital tone strictly.
+user-invocable: false
+called_by:
+  - op-build-proposal
+calls:
+  - task-flag-assumption
+inputs:
+  - client_name
+  - scope_path
+  - research_path
+  - meeting_notes_path
+outputs:
+  - proposal_file
 ---
 
 # flow-draft-proposal

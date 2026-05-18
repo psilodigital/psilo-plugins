@@ -1,10 +1,23 @@
 ---
+name: flow-extract-meeting-notes
 type: flow
-called_by: [op-write-followup]
-description: >
+version: 0.1.0
+description: |
   Structure raw meeting notes into pain points, opportunities, decisions, next steps
-  (with owner and date), and open questions. Distinguishes what was said from what
-  was inferred. Never invents agreements.
+  (with owner and date), and open questions. Distinguishes what was said from what was
+  inferred. Never invents agreements.
+user-invocable: false
+called_by:
+  - op-write-followup
+calls: []
+inputs:
+  - client_name
+  - meeting_date
+  - meeting_type
+  - attendees?
+  - raw_notes
+outputs:
+  - structured_meeting_summary
 ---
 
 # flow-extract-meeting-notes

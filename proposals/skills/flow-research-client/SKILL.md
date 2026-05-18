@@ -1,11 +1,24 @@
 ---
+name: flow-research-client
 type: flow
-called_by: [op-build-proposal, op-build-scope]
-description: >
-  Proposal-grade research on an existing client. Goes deeper than sales' prospect
-  research — focuses on operations maturity, data sources, team structure, prior
-  tech decisions, and AI-readiness signals. Reads from `_clients/<client>/` and
-  optionally augments with fresh public signals.
+version: 0.1.0
+description: |
+  Proposal-grade research on an existing client. Deeper than prospect research —
+  focuses on operations maturity, data sources, team structure, prior tech decisions,
+  and AI-readiness signals. Caches to _clients/<client>/research/.
+user-invocable: false
+called_by:
+  - op-build-proposal
+  - op-build-scope
+calls:
+  - task-flag-assumption
+  - task-update-open-questions
+inputs:
+  - client_name
+  - meeting_notes_path?
+  - refresh?
+outputs:
+  - research_findings_file
 ---
 
 # flow-research-client

@@ -1,11 +1,27 @@
 ---
+name: task-update-open-questions
 type: task
-called_by: [op-build-proposal, op-build-scope, flow-research-client, flow-build-scope]
-description: >
-  Atomic primitive. Manages open questions for a client — things that need a human
-  answer (from us or from the client) before the proposal can be finalized.
-  Different from assumptions: assumptions are inferences we made; open questions are
-  unknowns we need to ask. Appears in the proposal's "Open Questions" section.
+version: 0.1.0
+description: |
+  Atomic primitive. Manages open questions for a client — unknowns that need a human
+  answer (us, client, legal, etc.) before the proposal can be finalized. Distinct
+  from assumptions: questions ask, assumptions infer.
+user-invocable: false
+called_by:
+  - op-build-proposal
+  - op-build-scope
+  - flow-research-client
+  - flow-build-scope
+calls: []
+inputs:
+  - operation
+  - client
+  - question?
+  - needs_input_from?
+  - blocks_send?
+  - answer?
+  - answer_source?
+outputs: []
 ---
 
 # task-update-open-questions

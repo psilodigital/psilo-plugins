@@ -1,10 +1,24 @@
 ---
+name: flow-research-prospect
 type: flow
-called_by: [op-prep-discovery-call, op-draft-outreach]
-description: >
-  Public-signal research on a prospect company. Pulls website observations, review
-  patterns, recent press/hiring signals, and obvious operational issues. Returns
-  structured findings — never fabricates. Anything inferred is marked as inference.
+version: 0.1.0
+description: |
+  Public-signal research on a prospect company (website observations, review patterns,
+  hiring and press signals, observed operational issues). Returns structured findings —
+  never fabricates. Every finding tagged verified or inferred.
+user-invocable: false
+called_by:
+  - op-prep-discovery-call
+  - op-draft-outreach
+calls:
+  - task-flag-assumption
+inputs:
+  - client_name
+  - website_url?
+  - country_or_region?
+  - additional_known_context?
+outputs:
+  - research_findings
 ---
 
 # flow-research-prospect

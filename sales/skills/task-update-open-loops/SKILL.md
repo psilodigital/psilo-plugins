@@ -1,10 +1,24 @@
 ---
+name: task-update-open-loops
 type: task
-called_by: [op-prep-discovery-call, op-write-followup]
-description: >
-  Atomic primitive. Single write point for `open-loops.md`. Updates a prospect's stage,
-  next step, and next-step date. Resolves assumptions when validated. Never directly
-  edited by ops or flows — always goes through this task to keep the file consistent.
+version: 0.1.0
+description: |
+  Atomic primitive. Single write point for open-loops.md. Upserts a prospect's stage and
+  next step, or resolves an assumption. Never deletes — moves to Resolved for audit.
+user-invocable: false
+called_by:
+  - op-prep-discovery-call
+  - op-write-followup
+calls: []
+inputs:
+  - operation
+  - client
+  - stage?
+  - next_step?
+  - next_step_date?
+  - assumption_text?
+  - resolution?
+outputs: []
 ---
 
 # task-update-open-loops

@@ -1,11 +1,22 @@
 ---
+name: task-classify-bottleneck
 type: task
-called_by: [op-prep-discovery-call, flow-research-prospect]
-description: >
-  Atomic primitive. Given a described symptom (e.g. "they answer the same 5 questions
-  on email every week"), classify it against Psilodigital's known SME bottleneck
-  patterns from `_company/_shared/common-sme-bottlenecks.md`. Returns the matched
-  pattern(s) with confidence, or "unmatched" if no pattern applies.
+version: 0.1.0
+description: |
+  Atomic primitive. Given a described symptom (e.g. "they answer the same 5 questions on
+  email every week"), classify it against documented SME bottleneck patterns from
+  _company/_shared/common-sme-bottlenecks.md. Returns up to 3 ranked matches or unmatched.
+user-invocable: false
+called_by:
+  - op-prep-discovery-call
+  - flow-research-prospect
+calls: []
+inputs:
+  - symptom
+  - evidence?
+  - sector?
+outputs:
+  - matched_patterns
 ---
 
 # task-classify-bottleneck

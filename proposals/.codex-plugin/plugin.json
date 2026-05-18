@@ -7,5 +7,12 @@
     "email": "info@psilodigital.com"
   },
   "license": "MIT",
-  "homepage": "https://psilodigital.com"
+  "homepage": "https://psilodigital.com",
+  "agents": ["business-analyst", "solution-architect"],
+  "skills": "./skills/",
+  "vault": {
+    "template": "vault/config.md",
+    "structure": "vault/vault-structure.json"
+  },
+  "entry_docs": ["CLAUDE.md", "AGENTS.md", "GEMINI.md"]
 }

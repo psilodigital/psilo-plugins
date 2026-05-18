@@ -1,10 +1,26 @@
 ---
+name: task-flag-assumption
 type: task
-called_by: [op-prep-discovery-call, op-draft-outreach, op-write-followup, flow-research-prospect, flow-extract-meeting-notes]
-description: >
-  Atomic primitive. Writes an assumption flag to `open-loops.md` with severity and a
-  recommended verification step. Used whenever an op or flow infers something not
-  directly observable — keeps assumptions auditable.
+version: 0.1.0
+description: |
+  Atomic primitive. Appends an assumption flag to open-loops.md with severity and a
+  recommended verification step. Used by any op or flow when something is inferred
+  rather than directly observed — keeps assumptions auditable.
+user-invocable: false
+called_by:
+  - op-prep-discovery-call
+  - op-draft-outreach
+  - op-write-followup
+  - flow-research-prospect
+  - flow-extract-meeting-notes
+calls: []
+inputs:
+  - client
+  - assumption
+  - basis
+  - severity
+  - verification_step
+outputs: []
 ---
 
 # task-flag-assumption

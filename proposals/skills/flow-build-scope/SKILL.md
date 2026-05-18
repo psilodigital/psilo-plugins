@@ -1,11 +1,25 @@
 ---
+name: flow-build-scope
 type: flow
-called_by: [op-build-proposal, op-build-scope]
-description: >
+version: 0.1.0
+description: |
   MVP scope construction. Translates business requirements and research into a
-  delivery-ready scope: capabilities, data model, integrations, roles, risks, and
-  suggested phases. Defaults to a 4–8 week MVP unless the brief explicitly requires
-  longer. Every integration is flagged for feasibility verification.
+  delivery-ready scope: capabilities (≤7), data model (≤7 entities), integrations with
+  feasibility flags, roles (≤5), risks, suggested phases. Defaults to 4–8 week MVP.
+user-invocable: false
+called_by:
+  - op-build-proposal
+  - op-build-scope
+calls:
+  - task-flag-assumption
+  - task-update-open-questions
+inputs:
+  - client_name
+  - research_path
+  - meeting_notes_path
+  - business_goal
+outputs:
+  - scope_file
 ---
 
 # flow-build-scope

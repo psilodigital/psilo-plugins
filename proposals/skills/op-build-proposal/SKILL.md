@@ -1,13 +1,27 @@
 ---
+name: op-build-proposal
 type: op
-cadence: on-demand
-description: >
-  Produce a full proposal draft for a named client from meeting notes and client
-  context. Orchestrates business analysis (current state → problem → outcome) and
-  technical scope (capabilities, integrations, phases) into a single proposal
-  document with explicit assumptions, risks, and pricing placeholder.
-  Triggers: "build a proposal for <client>", "draft proposal <client>",
+version: 0.1.0
+description: |
+  Produce a full proposal draft for a named client. Orchestrates business analysis
+  (current state → problem → outcome) and technical scope (capabilities, integrations,
+  phases) into a single document with explicit assumptions, risks, and pricing
+  placeholder. Triggers: "build a proposal for <client>", "draft proposal <client>",
   "write proposal for <client>".
+user-invocable: true
+called_by: []
+calls:
+  - flow-research-client
+  - flow-build-scope
+  - flow-draft-proposal
+  - task-flag-assumption
+  - task-update-open-questions
+  - task-update-open-loops
+inputs:
+  - client_name
+outputs:
+  - proposal_file
+  - scope_file
 ---
 
 # op-build-proposal

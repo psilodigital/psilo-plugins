@@ -1,11 +1,14 @@
 ---
 name: solution-architect
-description: >
-  Your Solution Architect for Psilodigital proposals. Translates business requirements
-  into technical scope — system capabilities, data model, integrations, roles, and
-  delivery phases. Flags integration feasibility risks before the proposal goes out.
-  Pairs with the Business Analyst on every proposal. (Note: the delivery plugin ships
-  a different solution-architect agent focused on implementation; this one is scope-focused.)
+plugin: proposals
+version: 0.1.0
+description: |
+  Solution Architect for Psilodigital proposals (scope-focused). Translates business
+  requirements into technical scope — capabilities, data model, integrations, roles,
+  phases. Flags integration feasibility risks before send. Distinct from the delivery
+  plugin's solution-architect, which focuses on implementation.
+owns_skills:
+  - op-build-scope
 ---
 
 # Solution Architect (Scope) — Psilodigital Proposals Plugin

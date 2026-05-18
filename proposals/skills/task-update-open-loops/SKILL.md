@@ -1,10 +1,25 @@
 ---
+name: task-update-open-loops
 type: task
-called_by: [op-build-proposal, op-build-scope]
-description: >
-  Atomic primitive. Single write point for the proposals plugin's `open-loops.md`.
-  Tracks proposal stage and next step per client. Sister of the sales plugin's
-  same-named task, but writes to the proposals sub-vault.
+version: 0.1.0
+description: |
+  Atomic primitive. Single write point for the proposals plugin's open-loops.md.
+  Upserts a proposal's stage and next step, or resolves it (accepted/lost/withdrawn).
+  Never deletes — moves to Resolved Proposals.
+user-invocable: false
+called_by:
+  - op-build-proposal
+  - op-build-scope
+calls: []
+inputs:
+  - operation
+  - client
+  - stage?
+  - next_step?
+  - next_step_date?
+  - value_placeholder?
+  - outcome?
+outputs: []
 ---
 
 # task-update-open-loops

@@ -1,12 +1,23 @@
 ---
+name: op-draft-outreach
 type: op
-cadence: on-demand
-description: >
-  Draft cold or warm outreach to a prospect (email or LinkedIn message). Researches
-  the prospect, anchors the message on a specific observation, applies Psilodigital
-  tone of voice (warm, concise, ≤120 words for cold), proposes a single concrete next
-  step. Triggers: "draft outreach to <client>", "write a cold email to <client>",
-  "warm intro to <client>".
+version: 0.1.0
+description: |
+  Draft cold or warm outreach (email or LinkedIn) to a prospect. Anchors on a specific
+  observation, applies Psilodigital tone (warm, concise, ≤120 words for cold), proposes
+  a single concrete next step. Triggers: "draft outreach to <client>",
+  "write a cold email to <client>", "warm intro to <client>".
+user-invocable: true
+called_by: []
+calls:
+  - flow-research-prospect
+  - task-flag-assumption
+inputs:
+  - client_name
+  - outreach_type
+  - connection_detail?
+outputs:
+  - outreach_draft_file
 ---
 
 # op-draft-outreach

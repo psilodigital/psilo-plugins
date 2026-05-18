@@ -1,11 +1,25 @@
 ---
+name: op-build-scope
 type: op
-cadence: on-demand
-description: >
+version: 0.1.0
+description: |
   Produce a standalone MVP scope document for a client (when the full proposal is
-  deferred — e.g., paid scoping engagement, or post-discovery technical alignment
-  call). Triggers: "scope <client>", "build MVP scope for <client>",
+  deferred — paid scoping engagement, or post-discovery technical alignment). Triggers:
+  "scope <client>", "build MVP scope for <client>",
   "what would an MVP look like for <client>?".
+user-invocable: true
+called_by: []
+calls:
+  - flow-research-client
+  - flow-build-scope
+  - task-flag-assumption
+  - task-update-open-questions
+  - task-update-open-loops
+inputs:
+  - client_name
+  - business_goal?
+outputs:
+  - scope_file
 ---
 
 # op-build-scope
