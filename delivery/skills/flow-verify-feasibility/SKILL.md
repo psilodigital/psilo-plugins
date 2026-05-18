@@ -1,10 +1,22 @@
 ---
+name: flow-verify-feasibility
 type: flow
-called_by: [op-scope-to-delivery]
-description: >
-  Verify an integration tagged `TBD-feasibility` in the proposal scope. Reads the
-  target system's documentation, identifies auth model, rate limits, and sandbox
-  availability. Returns `confirmed`, `confirmed-with-caveats`, or `blocker`.
+version: 0.1.0
+description: |
+  Verify an integration tagged TBD-feasibility in the proposal scope. Reads target
+  docs, identifies auth model, rate limits, sandbox availability. Returns confirmed,
+  confirmed-with-caveats, or blocker. Blockers stop the calling op.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+calls:
+  - task-flag-risk
+inputs:
+  - client_name
+  - integration
+  - required_capabilities
+outputs:
+  - feasibility_note_file
 ---
 
 # flow-verify-feasibility

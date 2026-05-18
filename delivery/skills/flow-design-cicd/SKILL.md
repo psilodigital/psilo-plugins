@@ -1,11 +1,22 @@
 ---
+name: flow-design-cicd
 type: flow
-called_by: [op-scope-to-delivery]
-description: >
-  Produce a CI/CD pipeline definition. Every build runs tests, lint, and security
-  scan. Every deploy is reversible — automatic rollback on health-check failure.
-  No manual SSH-and-deploy. Returns the pipeline definition as a YAML-like
-  description plus a deployment runbook.
+version: 0.1.0
+description: |
+  Produce a CI/CD pipeline definition with reversible deployments. Every build runs
+  tests, lint, and security scan. Automatic rollback on health-check failure. No
+  manual SSH-and-deploy. Returns the pipeline definition + deployment runbook.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+calls:
+  - task-flag-risk
+inputs:
+  - ci_provider
+  - hosting_default
+  - repo_url
+outputs:
+  - cicd_file
 ---
 
 # flow-design-cicd

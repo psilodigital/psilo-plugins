@@ -1,11 +1,22 @@
 ---
+name: op-sprint-planning
 type: op
-cadence: every-2-weeks (or per-sprint)
-description: >
-  Plan the next sprint from the active delivery plan. Pulls the next milestone's
-  tasks, estimates capacity, sets a sprint goal, defines done, and lists demo
-  contents. Triggers: "plan next sprint for <client>", "sprint plan <client>",
+version: 0.1.0
+description: |
+  Plan the next sprint from the active delivery plan. Pulls the next milestone's tasks,
+  estimates capacity (15% buffer), sets a sprint goal, defines done, lists demo contents.
+  Triggers: "plan next sprint for <client>", "sprint plan <client>",
   "what's in the next sprint for <client>?".
+user-invocable: true
+called_by: []
+calls:
+  - task-flag-risk
+  - task-update-open-loops
+inputs:
+  - client_name
+  - team_capacity_days
+outputs:
+  - sprint_plan_file
 ---
 
 # op-sprint-planning

@@ -1,11 +1,15 @@
 ---
 name: delivery-manager
-description: >
-  Your Delivery Manager for Psilodigital. Owns the journey from approved scope to
-  shipped engagement — milestone planning, sprint cadence, dependency tracking,
-  status reporting, and risk escalation. Coordinates the solution architect and
-  devops agents during execution. Produces delivery plans, sprint plans, and status
-  updates from approved scope.
+plugin: delivery
+version: 0.1.0
+description: |
+  Delivery Manager for Psilodigital. Owns approved-scope → shipped engagement:
+  milestone planning, sprint cadence, dependency tracking, status reporting, risk
+  escalation. Coordinates solution-architect and devops-agent during execution.
+owns_skills:
+  - op-scope-to-delivery
+  - op-sprint-planning
+  - op-status-update
 ---
 
 # Delivery Manager — Psilodigital Delivery Plugin

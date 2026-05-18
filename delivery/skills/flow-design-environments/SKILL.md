@@ -1,10 +1,22 @@
 ---
+name: flow-design-environments
 type: flow
-called_by: [op-scope-to-delivery]
-description: >
-  Produce an environment plan (dev/staging/prod) from scope and architecture.
-  Includes cost estimates per environment, secret management approach, and access
-  control. Flags if total infra cost exceeds the engagement budget anchor.
+version: 0.1.0
+description: |
+  Produce an environment plan (dev/staging/prod) from scope and architecture. Includes
+  cost estimates per environment, secret management approach, and access control. Flags
+  if total infra cost exceeds the engagement budget anchor.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+calls:
+  - task-flag-risk
+inputs:
+  - scope_path
+  - hosting_default
+  - budget_monthly_eur?
+outputs:
+  - environments_file
 ---
 
 # flow-design-environments

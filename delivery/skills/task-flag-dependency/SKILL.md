@@ -1,10 +1,24 @@
 ---
+name: task-flag-dependency
 type: task
-called_by: [op-scope-to-delivery, op-sprint-planning, op-status-update]
-description: >
-  Atomic primitive. Writes a dependency entry to `open-loops.md`. Every dependency
-  has an owner and a follow-up date — no "waiting on client" without a name and a
+version: 0.1.0
+description: |
+  Atomic primitive. Appends a dependency entry to open-loops.md. Every dependency has
+  a named owner and a follow-up date — no "waiting on the client" without a name and
   date. Surfaces in status updates until resolved.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+  - op-sprint-planning
+  - op-status-update
+calls: []
+inputs:
+  - client
+  - dependency
+  - owner
+  - follow_up_date
+  - blocks
+outputs: []
 ---
 
 # task-flag-dependency

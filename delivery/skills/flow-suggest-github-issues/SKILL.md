@@ -1,11 +1,20 @@
 ---
+name: flow-suggest-github-issues
 type: flow
-called_by: [op-scope-to-delivery]
-description: >
-  Translate milestones into a proposed GitHub issue structure — titles, labels,
-  dependencies, milestones, and acceptance criteria. Produces a draft file; the
-  human reviews and creates the issues in GitHub manually (or via the GitHub MCP
-  with explicit per-issue approval).
+version: 0.1.0
+description: |
+  Translate milestones into proposed GitHub issue structure — titles, labels,
+  dependencies, milestones, acceptance criteria. Produces a draft file; never creates
+  issues directly. Human reviews and creates (or uses GitHub MCP with per-issue approval).
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+calls: []
+inputs:
+  - milestones
+  - repo_url
+outputs:
+  - issues_proposed_file
 ---
 
 # flow-suggest-github-issues

@@ -1,9 +1,29 @@
 ---
+name: task-update-open-loops
 type: task
-called_by: [op-scope-to-delivery, op-sprint-planning, op-status-update]
-description: >
-  Atomic primitive. Single write point for the delivery plugin's `open-loops.md`.
-  Manages engagement stage, next-step, and resolution of risks/dependencies.
+version: 0.1.0
+description: |
+  Atomic primitive. Single write point for the delivery plugin's open-loops.md.
+  Upserts engagement status (milestone, sprint, health, demo date), or resolves
+  engagements, risks, dependencies. Never deletes — moves to Resolved.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+  - op-sprint-planning
+  - op-status-update
+calls: []
+inputs:
+  - operation
+  - client
+  - milestone?
+  - sprint?
+  - health?
+  - next_demo_date?
+  - outcome?
+  - risk_text?
+  - dependency_text?
+  - resolution?
+outputs: []
 ---
 
 # task-update-open-loops

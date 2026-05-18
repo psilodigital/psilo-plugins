@@ -1,11 +1,22 @@
 ---
+name: op-status-update
 type: op
-cadence: weekly
-description: >
+version: 0.1.0
+description: |
   Generate a weekly status update from sprint progress. Summarizes what shipped,
-  what's next, risks, and decisions needed. Produces both client-facing and
-  internal versions per config. Triggers: "status update for <client>",
+  what's next, risks (with one-line plans), and decisions needed. Client-facing and
+  optionally internal versions. Triggers: "status update for <client>",
   "weekly update <client>", "write the <client> status report".
+user-invocable: true
+called_by: []
+calls:
+  - task-flag-risk
+  - task-update-open-loops
+inputs:
+  - client_name
+  - sprint_progress_notes?
+outputs:
+  - status_update_file
 ---
 
 # op-status-update

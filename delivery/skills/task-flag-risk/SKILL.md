@@ -1,9 +1,27 @@
 ---
+name: task-flag-risk
 type: task
-called_by: [op-scope-to-delivery, op-sprint-planning, op-status-update, flow-verify-feasibility, flow-design-environments]
-description: >
-  Atomic primitive. Writes a risk entry to `open-loops.md` with severity, owner, and
-  mitigation plan. Risks always require a mitigation plan — no risk without a plan.
+version: 0.1.0
+description: |
+  Atomic primitive. Appends a risk entry to open-loops.md with severity (low/medium/
+  high), owner, and mitigation plan. No risk without a plan. High severity escalates
+  immediately and surfaces in every status update until downgraded.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+  - op-sprint-planning
+  - op-status-update
+  - flow-verify-feasibility
+  - flow-design-environments
+  - flow-design-cicd
+calls: []
+inputs:
+  - client
+  - risk
+  - severity
+  - mitigation
+  - owner
+outputs: []
 ---
 
 # task-flag-risk

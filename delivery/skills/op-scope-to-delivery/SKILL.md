@@ -1,11 +1,31 @@
 ---
+name: op-scope-to-delivery
 type: op
-cadence: on-demand
-description: >
+version: 0.1.0
+description: |
   Convert an approved scope into a delivery plan — milestones, dependencies, integration
   feasibility verification, environment plan, CI/CD plan, and proposed GitHub issue
   structure. Triggers: "build delivery plan for <client>", "scope to delivery <client>",
   "plan execution for <client>".
+user-invocable: true
+called_by: []
+calls:
+  - flow-verify-feasibility
+  - flow-break-milestones
+  - flow-design-environments
+  - flow-design-cicd
+  - flow-suggest-github-issues
+  - task-flag-risk
+  - task-flag-dependency
+  - task-update-open-loops
+inputs:
+  - client_name
+  - scope_path?
+outputs:
+  - delivery_plan_file
+  - environments_file
+  - cicd_file
+  - issues_proposed_file
 ---
 
 # op-scope-to-delivery

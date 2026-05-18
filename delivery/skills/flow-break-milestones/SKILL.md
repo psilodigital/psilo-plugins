@@ -1,10 +1,20 @@
 ---
+name: flow-break-milestones
 type: flow
-called_by: [op-scope-to-delivery]
-description: >
+version: 0.1.0
+description: |
   Decompose approved scope capabilities into 2-week milestones, each with a demoable
-  deliverable. Identifies dependencies between milestones. Defaults to a 4–8 week
-  MVP plan unless scope explicitly requires more.
+  deliverable. Identifies inter-milestone dependencies. Default 4–8 week MVP.
+user-invocable: false
+called_by:
+  - op-scope-to-delivery
+calls: []
+inputs:
+  - scope_path
+  - team_size
+  - target_weeks_total?
+outputs:
+  - milestone_breakdown
 ---
 
 # flow-break-milestones
